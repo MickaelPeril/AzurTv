@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
             switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.menu_about:
                     // Comportement du bouton "À Propos"
                     return true;
             case R.id.menu_help:
