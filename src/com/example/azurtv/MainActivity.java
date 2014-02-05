@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.support.v4.app.FragmentActivity;
 
 /**
@@ -26,4 +27,34 @@ public class MainActivity extends FragmentActivity {
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
     }
  
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()) {
+            case R.id.action_settings:
+                    // Comportement du bouton "À Propos"
+                    return true;
+            case R.id.menu_help:
+                    // Comportement du bouton "Aide"
+                    return true;
+            case R.id.menu_refresh:
+                    // Comportement du bouton "Rafraichir"
+                    return true;
+            case R.id.menu_search:
+                    // Comportement du bouton "Recherche"
+                    return true;
+            case R.id.menu_settings:
+                    // Comportement du bouton "Paramètres"
+                    return true;
+            default:
+                    return super.onOptionsItemSelected(item);
+            }
+    }
 }
