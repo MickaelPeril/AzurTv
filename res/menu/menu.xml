@@ -3,6 +3,7 @@
 
     <item
         android:id="@+id/menu_search"
+        android:actionViewClass="android.widget.SearchView"
         android:icon="@drawable/ic_actionbar_search"
         android:showAsAction="ifRoom"
         android:title="@string/menu_search"/>
@@ -26,5 +27,7 @@
         
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    
+    
 
 </menu>
