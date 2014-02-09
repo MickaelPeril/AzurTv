@@ -15,14 +15,13 @@ import com.azurtv.R;
 
 public class JeuFragment extends Fragment {
  
-	private Activity	activity = null;
-	private Button		sendButton = null;
-	private EditText	nameEditText = null;
-	private EditText	emailEditText = null;
+	private Activity activity = null;
+	private Button sendButton = null;
+	private EditText nameEditText = null;
+	private EditText emailEditText = null;
 	
 	@Override
-	public void	 onAttach(Activity activity)
-	{
+	public void	 onAttach(Activity activity) {
 		super.onAttach(activity);
 		this.activity = activity;
 	}
@@ -39,11 +38,11 @@ public class JeuFragment extends Fragment {
         sendButton = (Button)view.findViewById(R.id.sendButton);
         
         // definition d'une action sur le click du bouton
-        sendButton.setOnClickListener(new OnClickListener()
-        {
+        sendButton.setOnClickListener(new OnClickListener() {
+
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
+
 				String	name = nameEditText.getText().toString();
 				String	email = emailEditText.getText().toString();
 				
@@ -56,8 +55,7 @@ public class JeuFragment extends Fragment {
 				// verification du format de l'email
 				else if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() == false)
 					Toast.makeText(activity, getString(R.string.email_not_valid), Toast.LENGTH_LONG).show();
-				else
-				{
+				else {
 					// si les champs sont bien remplis, on affiche un message de remerciement
 					nameEditText.setText(null);
 					emailEditText.setText(null);
