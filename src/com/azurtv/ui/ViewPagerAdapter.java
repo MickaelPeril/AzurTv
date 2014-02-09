@@ -1,4 +1,4 @@
-package com.example.azurtv;
+package com.azurtv.ui;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

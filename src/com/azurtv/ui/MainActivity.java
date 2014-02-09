@@ -1,4 +1,7 @@
-package com.example.azurtv;
+package com.azurtv.ui;
+
+import com.azurtv.ui.HelpActivity;
+import com.example.azurtv.R;
 
 import android.os.Bundle;
 import android.app.Activity;

@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.azurtv.MainActivity"
+            android:name="com.azurtv.ui.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +23,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.azurtv.AboutActivity"
+            android:name="com.azurtv.ui.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
         <activity
-            android:name="com.example.azurtv.HelpActivity"
+            android:name="com.azurtv.ui.HelpActivity"
             android:label="@string/title_activity_help" >
         </activity>
         <activity
-            android:name="com.example.azurtv.SettingsActivity"
+            android:name="com.azurtv.ui.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
     </application>

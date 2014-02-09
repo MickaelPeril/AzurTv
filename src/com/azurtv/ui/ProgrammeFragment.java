@@ -1,4 +1,6 @@
-package com.example.azurtv;
+package com.azurtv.ui;
+
+import com.example.azurtv.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class JeuFragment extends Fragment {
+public class ProgrammeFragment  extends Fragment {
  
 	
 	
@@ -16,7 +18,7 @@ public class JeuFragment extends Fragment {
     	 
     	 
         // Get the view from fragmenttab1.xml
-        View view = inflater.inflate(R.layout.jeu_layout, container, false);
+        View view = inflater.inflate(R.layout.programme_layout, container, false);
         return view;
     }
  
