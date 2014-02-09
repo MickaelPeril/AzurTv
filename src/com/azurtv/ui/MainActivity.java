@@ -1,15 +1,14 @@
 package com.azurtv.ui;
 
-import com.azurtv.ui.HelpActivity;
-import com.example.azurtv.R;
-
-import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.FragmentActivity;
+
+import com.azurtv.R;
 
 /**
  *  
@@ -18,6 +17,9 @@ import android.support.v4.app.FragmentActivity;
  */
 public class MainActivity extends FragmentActivity {
  
+	private ViewPagerAdapter	viewPagerAdapter = null;
+	private ViewPager			viewPager = null;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +27,12 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
  
         // Locate the viewpager in activity_main.xml
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
  
         // Set the ViewPagerAdapter into ViewPager
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
     }
  
     
@@ -56,6 +60,17 @@ public class MainActivity extends FragmentActivity {
                     return true;
             case R.id.menu_refresh:
                     // Comportement du bouton "Rafraichir"
+            	
+            		// on recupere le fragment courant
+            		int			position = viewPager.getCurrentItem();
+            		Fragment	currentFragment = viewPagerAdapter.getItem(position);
+            		
+            		// si le fragment courant est le fragment des podcasts, on recherche les podcasts
+            		if (currentFragment instanceof PodcastFragment)
+            		{
+            			((PodcastFragment)currentFragment).loadPodcast();
+            		}
+            	
                     return true;
             case R.id.menu_search:
                     // Comportement du bouton "Recherche"

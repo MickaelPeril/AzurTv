@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.azurtv"
+    package="com.azurtv"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="5"
         android:targetSdkVersion="18" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -34,6 +36,14 @@
             android:name="com.azurtv.ui.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        
+        <activity
+            android:name="com.azurtv.ui.PodcastActivity"
+            android:label="@string/title_activity_podcast"
+            android:configChanges="keyboard|screenSize|orientation"
+            >
+        </activity>
+        
     </application>
 
 </manifest>

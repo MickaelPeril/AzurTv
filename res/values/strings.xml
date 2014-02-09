@@ -22,5 +22,10 @@
     <string name="send">Envoyer</string>
     <string name="after_send_message">Merci d\'avoir rempli le formulaire.</string>
     
+    <string name="loading_podcast">Chargement des podcasts</string>
+    
+    <string name="error_podcast">Impossible de récupérer les podcasts, veuillez réessayer plus tard.</string>
+    
+    <string name="title_activity_podcast">Podcast</string>
     
 </resources>

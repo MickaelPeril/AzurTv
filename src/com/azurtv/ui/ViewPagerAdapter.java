@@ -9,7 +9,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
  
     final int PAGE_COUNT = 5;
     // Tab Titles
-    private String tabtitles[] = new String[] { "News", "Podcast", "WebTV", "Programmes", "Jeu" };
+    private String 		tabtitles[] = new String[] { "News", "Podcast", "WebTV", "Programmes", "Jeu" };
+    private Fragment	fragments[] = new Fragment[PAGE_COUNT];
+    
     Context context;
  
     public ViewPagerAdapter(FragmentManager fm) {
@@ -27,24 +29,29 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
  
             // Open FragmentTab1.java
         case 0:
-            NewsFragment newsfragment = new NewsFragment();
-            return  newsfragment;
+        	if (fragments[0] == null)
+        		fragments[0] = new NewsFragment();
+        	return fragments[0];
  
             // Open FragmentTab2.java
         case 1:
-            PodcastFragment podcastfragment = new PodcastFragment();
-            return podcastfragment ;
+        	if (fragments[1] == null)
+        		fragments[1] = new PodcastFragment();
+        	return fragments[1];
  
             // Open FragmentTab3.java
         case 2:
-            WebtvFragment  webtvfragment= new WebtvFragment();
-            return webtvfragment;
+        	if (fragments[2] == null)
+        		fragments[2] = new WebtvFragment();
+        	return fragments[2];
         case 3:
-           ProgrammeFragment  programmefragment= new ProgrammeFragment();
-            return programmefragment;
+        	if (fragments[3] == null)
+        		fragments[3] = new ProgrammeFragment();
+        	return fragments[3];
         case 4:
-            JeuFragment  jeufragment= new JeuFragment();
-             return jeufragment;
+        	if (fragments[4] == null)
+        		fragments[4] = new JeuFragment();
+        	return fragments[4];
         }
         return null;
     }

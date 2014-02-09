@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.azurtv.R;
+import com.azurtv.R;
 
 public class JeuFragment extends Fragment {
  

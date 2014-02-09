@@ -1,12 +1,12 @@
 package com.azurtv.ui;
 
-import com.example.azurtv.R;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.widget.TextView;
+
+import com.azurtv.R;
 
 public class AboutActivity extends Activity {
 
