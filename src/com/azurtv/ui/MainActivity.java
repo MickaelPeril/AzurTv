@@ -21,6 +21,7 @@ public class MainActivity extends FragmentActivity {
  
 	private ViewPagerAdapter	viewPagerAdapter = null;
 	private ViewPager			viewPager = null;
+	
 	private String[] drawerItemsList;
 	private ListView myDrawer;
 	
@@ -32,18 +33,19 @@ public class MainActivity extends FragmentActivity {
  
         // Locate the viewpager in activity_main.xml
         viewPager = (ViewPager) findViewById(R.id.pager);
- 
-        // Set the ViewPagerAdapter into ViewPager
         
+
+        // Set the ViewPagerAdapter into ViewPager
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
         
-        drawerItemsList = getResources().getStringArray(R.array.items);
-		myDrawer = (ListView) findViewById(R.id.my_drawer);
-		myDrawer.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_item, drawerItemsList));
+        /////
+    	drawerItemsList = getResources().getStringArray(R.array.items);
+    	myDrawer = (ListView) findViewById(R.id.my_drawer);
+   		myDrawer.setAdapter(new ArrayAdapter<String>(this,
+    				R.layout.drawer_item, drawerItemsList));
+   		////
     }
- 
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

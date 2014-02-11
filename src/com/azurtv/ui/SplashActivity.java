@@ -17,6 +17,8 @@ public class SplashActivity extends Activity {
 
 	private String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
 	RSSFeed feed;
+	private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed";
+	RSSFeed feedprog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,10 @@ public class SplashActivity extends Activity {
 			// Obtain feed
 			DOMParser myParser = new DOMParser();
 			feed = myParser.parseXml(RSSFEEDURL);
+			
+			DOMParser myParserprog = new DOMParser();
+			feedprog = myParserprog.parseXml(RSSFEEDURLprog);
+			
 			return null;
 
 		}
@@ -72,10 +78,14 @@ public class SplashActivity extends Activity {
 
 			Bundle bundle = new Bundle();
 			bundle.putSerializable("feed", feed);
+			
+			Bundle bundleprog = new Bundle();
+			bundleprog.putSerializable("feedprog", feedprog);
 
 			// launch List activity
 			Intent intent = new Intent(SplashActivity.this, MainActivity.class);
 			intent.putExtras(bundle);
+			intent.putExtras(bundleprog);
 			startActivity(intent);
 
 			// kill this activity

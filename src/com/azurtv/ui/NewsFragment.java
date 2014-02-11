@@ -19,7 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.azurtv.R;
 import com.azurtv.image.ImageLoader;
 import com.azurtv.parser.RSSFeed;
-import com.azurtv.ui.DetailActivity;
+import com.azurtv.ui.DetailNewsActivity;
 import com.azurtv.ui.NewsFragment;
 import com.azurtv.ui.NewsFragment.CustomListAdapter;
 
@@ -72,7 +72,7 @@ public class NewsFragment extends Fragment {
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("feed", feed);
 				Intent intent = new Intent( activity,
-						DetailActivity.class);
+						DetailNewsActivity.class);
 				intent.putExtras(bundle);
 				intent.putExtra("pos", pos);
 				startActivity(intent);

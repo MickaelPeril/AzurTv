@@ -9,26 +9,18 @@
     <string name="menu_about">A propos</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_help">HelpActivity</string>
-
     <string name="name">Nom :</string>
     <string name="enter_name">Entrez votre nom</string>
     <string name="enter_name_error">Veuillez entrer un nom svp.</string>
-    
-    <string name="email">E-mail :</string>    
+    <string name="email">E-mail :</string>
     <string name="entrer_email">Entrez votre e-mail</string>
     <string name="entrer_email_error">Veuillez entrer un e-mail svp.</string>
     <string name="email_not_valid">Merci de rentrer un e-mail valide.</string>
-    
     <string name="send">Envoyer</string>
     <string name="after_send_message">Merci d\'avoir rempli le formulaire.</string>
-    
     <string name="loading_podcast">Chargement des podcasts</string>
-    
     <string name="error_podcast">Impossible de récupérer les podcasts, veuillez réessayer plus tard.</string>
-    
     <string name="title_activity_podcast">Podcast</string>
-    
-    
     <string name="title_activity_main">MainActivity</string>
     <string name="loading">Loading please wait&#8230;</string>
     <string name="title">Title goes here!</string>
@@ -36,11 +28,16 @@
     <string name="desc">Description goes here!</string>
     <string name="linkLabel">Link to web: </string>
     <string name="linkText">Link goes here!</string>
-    <string-array  name="items">
-        <item>item 1</item>
-        <item>item 2</item>
-        <item>item 3</item>
-        <item>item 4</item>    
-	</string-array>
+    <string name="title_activity_detail_prog">DetailProgActivity</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string-array name="items">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+    </string-array>
     
 </resources>
