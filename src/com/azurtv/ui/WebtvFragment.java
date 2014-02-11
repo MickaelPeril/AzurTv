@@ -1,5 +1,6 @@
 package com.azurtv.ui;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebSettings.LayoutAlgorithm;
+
 
 import com.azurtv.R;
 
@@ -19,10 +21,12 @@ public class WebtvFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	
-	 
         // Get the view from fragmenttab1.xml
         View view = inflater.inflate(R.layout.webtv_layout, container, false);
         
+       
+        
+
         // lecture de la webTV
         
         webView = (WebView) view.findViewById(R.id.WebView1); 
@@ -31,6 +35,8 @@ public class WebtvFragment extends Fragment {
   	  webView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN); 
   	  webView.getSettings().setJavaScriptEnabled(true);
         
+  	
+  	  
         return view;
     }
  
