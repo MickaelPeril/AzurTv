@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.azurtv.R;
 
@@ -19,6 +21,8 @@ public class MainActivity extends FragmentActivity {
  
 	private ViewPagerAdapter	viewPagerAdapter = null;
 	private ViewPager			viewPager = null;
+	private String[] drawerItemsList;
+	private ListView myDrawer;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,11 @@ public class MainActivity extends FragmentActivity {
         
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
+        
+        drawerItemsList = getResources().getStringArray(R.array.items);
+		myDrawer = (ListView) findViewById(R.id.my_drawer);
+		myDrawer.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.drawer_item, drawerItemsList));
     }
  
     

@@ -36,5 +36,11 @@
     <string name="desc">Description goes here!</string>
     <string name="linkLabel">Link to web: </string>
     <string name="linkText">Link goes here!</string>
+    <string-array  name="items">
+        <item>item 1</item>
+        <item>item 2</item>
+        <item>item 3</item>
+        <item>item 4</item>    
+	</string-array>
     
 </resources>
