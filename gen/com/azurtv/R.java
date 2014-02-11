@@ -37,7 +37,7 @@ public final class R {
         public static final int video_icon=0x7f020006;
     }
     public static final class id {
-        public static final int WebViewWebTv=0x7f0a001b;
+        public static final int WebView1=0x7f0a001b;
         public static final int action_settings=0x7f0a001c;
         public static final int arrow=0x7f0a0010;
         public static final int contentWebView=0x7f0a0007;
@@ -77,17 +77,18 @@ public final class R {
         public static final int activity_help=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int activity_podcast=0x7f030003;
-        public static final int detail_news_layout=0x7f030004;
-        public static final int detailprog_layout=0x7f030005;
-        public static final int drawer_item=0x7f030006;
-        public static final int jeu_layout=0x7f030007;
-        public static final int list_item=0x7f030008;
-        public static final int news_layout=0x7f030009;
-        public static final int podcast_layout=0x7f03000a;
-        public static final int podcast_listview_item=0x7f03000b;
-        public static final int programme_layout=0x7f03000c;
-        public static final int splash_layout=0x7f03000d;
-        public static final int webtv_layout=0x7f03000e;
+        public static final int detail_layout=0x7f030004;
+        public static final int detail_news_layout=0x7f030005;
+        public static final int detailprog_layout=0x7f030006;
+        public static final int drawer_item=0x7f030007;
+        public static final int jeu_layout=0x7f030008;
+        public static final int list_item=0x7f030009;
+        public static final int news_layout=0x7f03000a;
+        public static final int podcast_layout=0x7f03000b;
+        public static final int podcast_listview_item=0x7f03000c;
+        public static final int programme_layout=0x7f03000d;
+        public static final int splash_layout=0x7f03000e;
+        public static final int webtv_layout=0x7f03000f;
     }
     public static final class menu {
         public static final int about=0x7f090000;

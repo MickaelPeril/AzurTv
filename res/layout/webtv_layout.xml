@@ -4,9 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <WebView
-        android:id="@+id/WebViewWebTv"
-        android:layout_width="match_parent"
-        android:layout_height="131dp" />
+   <WebView
+        android:id="@+id/WebView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
 
 </LinearLayout>
