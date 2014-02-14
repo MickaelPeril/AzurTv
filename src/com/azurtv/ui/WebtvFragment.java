@@ -25,7 +25,7 @@ public class WebtvFragment extends Fragment {
         View view = inflater.inflate(R.layout.webtv_layout, container, false);
         
        
-        
+        // faire la progressBAr 
 
         // lecture de la webTV
         
