@@ -24,7 +24,9 @@ public class WebtvFragment extends Fragment {
         // Get the view from fragmenttab1.xml
         View view = inflater.inflate(R.layout.webtv_layout, container, false);
         
-       
+       // faire la progressebar
+        
+        
         // lecture de la webTV
         
         webView = (WebView) view.findViewById(R.id.WebView1); 

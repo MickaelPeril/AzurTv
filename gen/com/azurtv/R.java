@@ -37,8 +37,8 @@ public final class R {
         public static final int video_icon=0x7f020006;
     }
     public static final class id {
-        public static final int WebView1=0x7f0a001d;
-        public static final int action_settings=0x7f0a001e;
+        public static final int WebView1=0x7f0a001b;
+        public static final int action_settings=0x7f0a001c;
         public static final int arrow=0x7f0a0010;
         public static final int contentWebView=0x7f0a0007;
         public static final int date=0x7f0a0011;
@@ -51,11 +51,11 @@ public final class R {
         public static final int listViewNews=0x7f0a0012;
         public static final int listViewProg=0x7f0a0017;
         public static final int loadingLayout=0x7f0a0013;
-        public static final int menu_about=0x7f0a0022;
-        public static final int menu_help=0x7f0a0021;
-        public static final int menu_refresh=0x7f0a0020;
-        public static final int menu_search=0x7f0a001f;
-        public static final int menu_settings=0x7f0a0023;
+        public static final int menu_about=0x7f0a0020;
+        public static final int menu_help=0x7f0a001f;
+        public static final int menu_refresh=0x7f0a001e;
+        public static final int menu_search=0x7f0a001d;
+        public static final int menu_settings=0x7f0a0021;
         public static final int messageTextView=0x7f0a0016;
         public static final int my_drawer=0x7f0a0005;
         public static final int nameEditText=0x7f0a000b;
@@ -63,13 +63,11 @@ public final class R {
         public static final int podcastTitle=0x7f0a0006;
         public static final int podcastsListView=0x7f0a0015;
         public static final int progressBar=0x7f0a0014;
-        public static final int progressBar1=0x7f0a001c;
         public static final int relativeLayout1=0x7f0a000f;
         public static final int scrollView1=0x7f0a0001;
         public static final int sendButton=0x7f0a000d;
         public static final int sv=0x7f0a0009;
         public static final int textView=0x7f0a001a;
-        public static final int textView1=0x7f0a001b;
         public static final int thumb=0x7f0a000e;
         public static final int title=0x7f0a0008;
         public static final int tv1=0x7f0a0000;
