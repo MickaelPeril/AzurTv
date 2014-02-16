@@ -22,9 +22,10 @@ import com.azurtv.podcast.ExtractPodcast;
 import com.azurtv.podcast.Podcast;
 import com.azurtv.podcast.PodcastListViewAdapter;
 
-public class PodcastFragment extends Fragment implements OnNetworkRequestResult {
+public class PodcastFragment extends Fragment {
 	
-	private static final String PODCAST_URL = "http://www.azur-tv.fr/podcast.xml";
+	private static final String	PODCAST_HTML_URL = "http://www.azur-tv.fr/VOD";
+	private static final String PODCAST_XML_URL = "http://www.azur-tv.fr/podcast.xml";
 	
 	private Activity activity = null;
 	private LinearLayout loadingLayout = null;
@@ -67,22 +68,61 @@ public class PodcastFragment extends Fragment implements OnNetworkRequestResult 
     	
     	// on cree la requete internet et on l'envoie. On utilise l'object PodcastFragment en tant que callback,
     	// et les methodes onSuccess ou onError seront appele par la classe HttpNetworkRequest en cas de succes ou d'erreur de la requete internet
-    	HttpNetworkRequest	networkRequest = new HttpNetworkRequest(PODCAST_URL, this);
+    	HttpNetworkRequest	networkRequest = new HttpNetworkRequest(PODCAST_XML_URL, new OnRssFeedResult());
     	networkRequest.sendRequest();
     }
-    
-    // la methode on success est appelee lorque qu'on recupere le resultat de la requete internet
-	@Override
-	public void onSuccess(String result) {
-		
-		ExtractPodcast	extractor = new ExtractPodcast();
-		
-		// on recupere une liste de podcast a partir du resultat de la recherche
-		podcasts = extractor.extract(result);
-		
-		// si la liste n'est pas vide, on affiche les podcasts
-		if (podcasts != null && podcasts.isEmpty() == false) {
 
+
+	private class	OnRssFeedResult implements OnNetworkRequestResult
+	{
+
+		@Override
+		public void onSuccess(String result) {
+			ExtractPodcast	extractor = new ExtractPodcast();
+			
+			// on recupere une liste de podcast a partir du resultat de la recherche
+			podcasts = extractor.extractItems(result);
+			
+			// si la liste n'est pas vide, on recupere les images des podcasts
+			if (podcasts != null && podcasts.isEmpty() == false) {
+
+		    	HttpNetworkRequest	networkRequest = new HttpNetworkRequest(PODCAST_HTML_URL, new OnHtmlPageResult());
+		    	networkRequest.sendRequest();
+
+			}
+			// sinon il y a eu une erreur et on affiche un message d'erreur.
+			else
+				onError(0, null);
+		}
+
+		@Override
+		public void onError(int errorCode, String message) {
+			// meme chose que dans la methode onSuccess : on repasse sur le UI thread et on affiche un message d'erreur
+			activity.runOnUiThread(new Runnable() {
+				
+				@Override
+				public void run() {
+					
+					// en cas d'erreur, on cache le chargement et on affiche un message d'erreur
+					loadingLayout.setVisibility(View.GONE);
+					messageTextView.setText(activity.getString(R.string.error_podcast));
+			        messageTextView.setVisibility(View.VISIBLE);
+				}
+			});
+		}
+		
+	}
+	
+	private class	OnHtmlPageResult implements OnNetworkRequestResult
+	{
+
+		@Override
+		public void onSuccess(String result) {
+			
+			ExtractPodcast	extractor = new ExtractPodcast();
+			
+			// on recupere une liste de podcast a partir du resultat de la recherche
+			extractor.extractImages(result, podcasts);
 			// comme la methode n'est pas appele sur le thread UI, on repasse sur le thread UI pour faire des traitements graphiques
 			activity.runOnUiThread(new Runnable() {
 
@@ -95,7 +135,7 @@ public class PodcastFragment extends Fragment implements OnNetworkRequestResult 
 					podcastListView.setVisibility(View.VISIBLE);
 					
 					// on rempli la listview avec les podcasts grace a un adapter
-					podcastListView.setAdapter(new PodcastListViewAdapter(podcasts, LayoutInflater.from(activity)));
+					podcastListView.setAdapter(new PodcastListViewAdapter(activity, podcasts, LayoutInflater.from(activity)));
 					
 					// et on defini un evenement lorsqu'on click sur un item de la listview
 					podcastListView.setOnItemClickListener(new OnItemClickListener() {
@@ -115,27 +155,21 @@ public class PodcastFragment extends Fragment implements OnNetworkRequestResult 
 					});
 				}
 			});
-
 		}
-		// sinon il y a eu une erreur et on affiche un message d'erreur.
-		else
-			onError(0, null);
-	}
 
-	@Override
-	public void onError(int errorCode, String message) {
-
-		// meme chose que dans la methode onSuccess : on repasse sur le UI thread et on affiche un message d'erreur
-		activity.runOnUiThread(new Runnable() {
-			
-			@Override
-			public void run() {
+		@Override
+		public void onError(int errorCode, String message) {
+			activity.runOnUiThread(new Runnable() {
 				
-				// en cas d'erreur, on cache le chargement et on affiche un message d'erreur
-				loadingLayout.setVisibility(View.GONE);
-				messageTextView.setText(activity.getString(R.string.error_podcast));
-		        messageTextView.setVisibility(View.VISIBLE);
-			}
-		});
+				@Override
+				public void run() {
+					
+					// en cas d'erreur, on cache le chargement et on affiche un message d'erreur
+					loadingLayout.setVisibility(View.GONE);
+					messageTextView.setText(activity.getString(R.string.error_podcast));
+			        messageTextView.setVisibility(View.VISIBLE);
+				}
+			});
+		}
 	}
 }

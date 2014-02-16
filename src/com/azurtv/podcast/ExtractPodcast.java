@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -15,9 +17,10 @@ public class ExtractPodcast
 	private static final String ITEM = "item";
 	private static final String TITLE = "title";
 	private static final String DESCRIPTION = "description";
+	private static final String DATE = "pubDate";
 	
 	// extrait les podcasts depuis le flux rss obtenue avec la requete internet
-	public List<Podcast> extract(String result) {
+	public List<Podcast> extractItems(String result) {
 		List<Podcast> podcasts = new LinkedList<Podcast>();
 		Podcast currentItem = null;
 		
@@ -49,6 +52,12 @@ public class ExtractPodcast
 							// pareil pour la description
 							else if (name.equals(DESCRIPTION))
 								currentItem.setDescription(parser.nextText());
+							else if (name.equals(DATE))
+							{
+								String	date = parser.nextText();
+								currentItem.setDate(date.substring(0, date.length() - 6));
+							}
+								
 						}
 					}
 				}
@@ -79,6 +88,31 @@ public class ExtractPodcast
 		catch (IOException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	public void		extractImages(String result, List<Podcast> podcasts) {
+		
+		//extrait les images de la page html avec une regex
+		String imgRegex = "<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
+		Pattern p = Pattern.compile(imgRegex, Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(result);
+		
+		// on recupere les images et on les set dans les podcasts
+		int		it = 0, length = podcasts.size();
+		boolean	isFirst = true;
+		while (m.find() && it < length) {
+			String src = m.group(1);
+			
+			if (src != null && isFirst == false)
+			{
+				Podcast	podcast = podcasts.get(it);
+				podcast.setImage(src);
+				++it;
+			}
+			else if (isFirst == true)
+				isFirst = false;
+
 		}
 	}
 }

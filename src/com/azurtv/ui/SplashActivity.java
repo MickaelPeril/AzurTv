@@ -27,14 +27,14 @@ public class SplashActivity extends Activity {
 		setContentView(R.layout.splash_layout);
 
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		if (conMgr.getActiveNetworkInfo() == null
-				&& !conMgr.getActiveNetworkInfo().isConnected()
-				&& !conMgr.getActiveNetworkInfo().isAvailable()) {
+		if (conMgr == null || conMgr.getActiveNetworkInfo() == null
+				|| !conMgr.getActiveNetworkInfo().isConnected()
+				|| !conMgr.getActiveNetworkInfo().isAvailable()) {
 			// No connectivity - Show alert
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setMessage(
-					"Unable to reach server, \nPlease check your connectivity.")
-					.setTitle("TD RSS Reader")
+					"Impossible de se connecter au serveur, \n S'il vous plaît vérifier votre connection.")
+					.setTitle("AzurTv")
 					.setCancelable(false)
 					.setPositiveButton("Exit",
 							new DialogInterface.OnClickListener() {

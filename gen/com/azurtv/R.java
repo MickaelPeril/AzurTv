@@ -85,10 +85,9 @@ public final class R {
         public static final int list_item=0x7f030009;
         public static final int news_layout=0x7f03000a;
         public static final int podcast_layout=0x7f03000b;
-        public static final int podcast_listview_item=0x7f03000c;
-        public static final int programme_layout=0x7f03000d;
-        public static final int splash_layout=0x7f03000e;
-        public static final int webtv_layout=0x7f03000f;
+        public static final int programme_layout=0x7f03000c;
+        public static final int splash_layout=0x7f03000d;
+        public static final int webtv_layout=0x7f03000e;
     }
     public static final class menu {
         public static final int about=0x7f090000;

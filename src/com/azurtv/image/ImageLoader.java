@@ -78,7 +78,6 @@ public class ImageLoader {
 			bitmap = decodeFile(f);
 			return bitmap;
 		} catch (Throwable ex) {
-			ex.printStackTrace();
 			if (ex instanceof OutOfMemoryError)
 				memoryCache.clear();
 			return null;
