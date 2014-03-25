@@ -1,9 +1,11 @@
 package com.azurtv.ui;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +27,8 @@ public class MainActivity extends FragmentActivity {
 	private String[] drawerItemsList;
 	private ListView myDrawer;
 	
+	public int nbFragment;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,9 @@ public class MainActivity extends FragmentActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(viewPagerAdapter);
         
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        viewPager.setCurrentItem(bundle.getInt("fragment"));
         /////
     	drawerItemsList = getResources().getStringArray(R.array.items);
     	myDrawer = (ListView) findViewById(R.id.my_drawer);

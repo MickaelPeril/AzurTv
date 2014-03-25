@@ -30,7 +30,7 @@
     <string name="linkText">Link goes here!</string>
     <string name="title_activity_detail_prog">DetailProgActivity</string>
     <string name="hello_world">Hello world!</string>
-    
+
     <string-array name="items">
         <item>Item 1</item>
         <item>Item 2</item>
@@ -39,5 +39,7 @@
         <item>Item 5</item>
         <item>Item 6</item>
     </string-array>
-    
+
+    <string name="title_activity_home">HomeActivity</string>
+
 </resources>

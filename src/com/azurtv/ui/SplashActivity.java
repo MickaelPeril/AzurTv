@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.azurtv.HomeActivity;
 import com.azurtv.R;
 import com.azurtv.parser.DOMParser;
 import com.azurtv.parser.RSSFeed;
@@ -17,8 +18,8 @@ public class SplashActivity extends Activity {
 
 	private String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
 	RSSFeed feed;
-	private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed";
-	RSSFeed feedprog;
+	/*private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed";
+	RSSFeed feedprog;*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class SplashActivity extends Activity {
 			feed = myParser.parseXml(RSSFEEDURL);
 			
 			DOMParser myParserprog = new DOMParser();
-			feedprog = myParserprog.parseXml(RSSFEEDURLprog);
+			//feedprog = myParserprog.parseXml(RSSFEEDURLprog);
 			
 			return null;
 
@@ -79,14 +80,18 @@ public class SplashActivity extends Activity {
 			Bundle bundle = new Bundle();
 			bundle.putSerializable("feed", feed);
 			
-			Bundle bundleprog = new Bundle();
-			bundleprog.putSerializable("feedprog", feedprog);
+			//Bundle bundleprog = new Bundle();
+			//bundleprog.putSerializable("feedprog", feedprog);
 
 			// launch List activity
-			Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+			Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
 			intent.putExtras(bundle);
-			intent.putExtras(bundleprog);
 			startActivity(intent);
+			//Intent intent2 = new Intent(SplashActivity.this, HomeActivity.class);
+			//
+			//intent.putExtras(bundleprog);
+			//startActivity(intent2);
+			//startActivity(new Intent(SplashActivity.this, HomeActivity.class));
 
 			// kill this activity
 			finish();
