@@ -54,6 +54,10 @@
             android:name="com.azurtv.ui.DetailProgActivity"
             android:label="@string/title_activity_detail_prog" >
         </activity>
+        <activity
+            android:name="com.azurtv.HomeActivity"
+            android:label="@string/title_activity_home" >
+        </activity>
     </application>
 
 </manifest>

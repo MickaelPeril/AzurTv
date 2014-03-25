@@ -29,7 +29,7 @@ public class WebtvFragment extends Fragment {
         // lecture de la webTV
         
         webView = (WebView) view.findViewById(R.id.WebView1); 
-  	  videoHtml = "<iframe allowfullscreen='' frameborder='0' height='270' src='http://www.dailymotion.com/embed/video/x13x1q2?autoPlay=1' width='350'/>"; 
+  	  videoHtml = "<iframe  frameborder='0' height='100%' src='http://www.dailymotion.com/embed/video/x13x1q2?autoPlay=1' allowfullscreen width='100%'/>"; 
   	  webView.loadData(videoHtml, "text/html", "UTF-8"); 
   	  webView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN); 
   	  webView.getSettings().setJavaScriptEnabled(true);
