@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.azurtv.HomeActivity;
 import com.azurtv.R;
 import com.azurtv.parser.DOMParser;
 import com.azurtv.parser.RSSFeed;
