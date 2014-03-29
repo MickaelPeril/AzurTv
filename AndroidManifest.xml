@@ -10,11 +10,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <application
+  <application
         android:allowBackup="true"
-        android:largeHeap="true"
-        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -47,23 +44,9 @@
         </activity>
         <activity
             android:name="com.azurtv.ui.PodcastActivity"
-            android:label="@string/title_activity_podcast" >
-        </activity>
-        <activity
-            android:name="com.azurtv.ui.PodcastActivityICS"
             android:configChanges="keyboard|screenSize|orientation"
             android:label="@string/title_activity_podcast" >
         </activity>
-        <activity
-          android:name="com.azurtv.ui.WebTvActivity"
-          android:screenOrientation="landscape"
-          android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-         ></activity>
-        <activity
-          android:name="com.azurtv.ui.VideoPlayerActivity"
-          android:screenOrientation="landscape"
-          android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-         ></activity>
         <activity android:name="com.azurtv.ui.DetailNewsActivity" >
         </activity>
         <activity
@@ -71,7 +54,7 @@
             android:label="@string/title_activity_detail_prog" >
         </activity>
         <activity
-            android:name="com.azurtv.HomeActivity"
+            android:name="com.azurtv.ui.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
     </application>
