@@ -13,89 +13,97 @@ import com.azurtv.R;
 import com.azurtv.parser.DOMParser;
 import com.azurtv.parser.RSSFeed;
 
-public class SplashActivity extends Activity {
+public class SplashActivity
+    extends Activity
+{
 
-	private String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
-	RSSFeed feed;
-	/*private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed";
-	RSSFeed feedprog;*/
+  private final String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+  RSSFeed feed;
 
-		setContentView(R.layout.splash_layout);
+  /*
+   * private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed"; RSSFeed feedprog;
+   */
 
-		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		if (conMgr == null || conMgr.getActiveNetworkInfo() == null
-				|| !conMgr.getActiveNetworkInfo().isConnected()
-				|| !conMgr.getActiveNetworkInfo().isAvailable()) {
-			// No connectivity - Show alert
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(
-					"Impossible de se connecter au serveur, \n S'il vous plaît vérifier votre connection.")
-					.setTitle("AzurTv")
-					.setCancelable(false)
-					.setPositiveButton("Exit",
-							new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog,
-										int id) {
-									finish();
-								}
-							});
+  @Override
+  protected void onCreate(Bundle savedInstanceState)
+  {
+    super.onCreate(savedInstanceState);
 
-			AlertDialog alert = builder.create();
-			alert.show();
+    setContentView(R.layout.splash_layout);
 
-		} else {
-			// Connected - Start parsing
-			new AsyncLoadXMLFeed().execute();
+    ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    if (conMgr == null || conMgr.getActiveNetworkInfo() == null || !conMgr.getActiveNetworkInfo().isConnected() || !conMgr.getActiveNetworkInfo().isAvailable())
+    {
+      // No connectivity - Show alert
+      AlertDialog.Builder builder = new AlertDialog.Builder(this);
+      builder.setMessage("Impossible de se connecter au serveur, \n S'il vous plait vérifier votre connection.").setTitle("AzurTv").setCancelable(false).setPositiveButton(
+          "Exit", new DialogInterface.OnClickListener()
+          {
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+              finish();
+            }
+          });
 
-		}
+      AlertDialog alert = builder.create();
+      alert.show();
 
-	}
+    }
+    else
+    {
+      // Connected - Start parsing
+      new AsyncLoadXMLFeed().execute();
 
-	private class AsyncLoadXMLFeed extends AsyncTask<Void, Void, Void> {
+    }
 
-		@Override
-		protected Void doInBackground(Void... params) {
+  }
 
-			// Obtain feed
-			DOMParser myParser = new DOMParser();
-			feed = myParser.parseXml(RSSFEEDURL);
-			
-			DOMParser myParserprog = new DOMParser();
-			//feedprog = myParserprog.parseXml(RSSFEEDURLprog);
-			
-			return null;
+  private class AsyncLoadXMLFeed
+      extends AsyncTask<Void, Void, Void>
+  {
 
-		}
+    @Override
+    protected Void doInBackground(Void... params)
+    {
 
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
+      // Obtain feed
+      DOMParser myParser = new DOMParser();
+      feed = myParser.parseXml(RSSFEEDURL);
 
-			Bundle bundle = new Bundle();
-			bundle.putSerializable("feed", feed);
-			
-			//Bundle bundleprog = new Bundle();
-			//bundleprog.putSerializable("feedprog", feedprog);
+      DOMParser myParserprog = new DOMParser();
+      // feedprog = myParserprog.parseXml(RSSFEEDURLprog);
 
-			// launch List activity
-			Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
-			intent.putExtras(bundle);
-			startActivity(intent);
-			//Intent intent2 = new Intent(SplashActivity.this, HomeActivity.class);
-			//
-			//intent.putExtras(bundleprog);
-			//startActivity(intent2);
-			//startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+      return null;
 
-			// kill this activity
-			finish();
-		}
+    }
 
-	}
+    @Override
+    protected void onPostExecute(Void result)
+    {
+      super.onPostExecute(result);
+
+      Bundle bundle = new Bundle();
+      bundle.putSerializable("feed", feed);
+
+      // Bundle bundleprog = new Bundle();
+      // bundleprog.putSerializable("feedprog", feedprog);
+
+      // launch List activity
+      Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+      intent.putExtras(bundle);
+      startActivity(intent);
+      // Intent intent2 = new Intent(SplashActivity.this, HomeActivity.class);
+      //
+      // intent.putExtras(bundleprog);
+      // startActivity(intent2);
+      // startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+
+      // kill this activity
+      finish();
+    }
+
+  }
 
 }

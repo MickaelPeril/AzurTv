@@ -1,10 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    >
+    <LinearLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    
     <TextView
         android:id="@+id/podcastTitle"
         android:layout_width="wrap_content"
@@ -14,10 +18,75 @@
         android:layout_margin="10dp"
         />
     
-    <WebView
-        android:id="@+id/contentWebView"
+    <RelativeLayout
+        android:id="@+id/videoLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+      >
+        
+        <SurfaceView
+           android:id="@+id/video"
+           android:layout_width="match_parent"
+           android:layout_height="200dip"
+           android:layout_centerHorizontal="true"
         />
-
+        
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/video"
+          android:layout_marginTop="@dimen/activity_vertical_margin"
+        >
+          <ImageButton
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_play_pressed"
+            android:tag="@string/play"
+          />
+          
+          <TextView
+            android:id="@+id/currentPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/play"
+            style="@style/mediaControllerTime"
+          />
+          
+          <ImageButton
+            android:id="@+id/fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_full_screen_pressed"
+          />
+          
+           <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/fullscreen"
+            style="@style/mediaControllerTime"
+          />
+           
+           <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/duration"
+            android:layout_toRightOf="@id/currentPosition"
+           />
+        </RelativeLayout>
+      </RelativeLayout>
+    
+    <WebView
+     android:id="@+id/contentWebView"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     />
 </LinearLayout>
+  </ScrollView>

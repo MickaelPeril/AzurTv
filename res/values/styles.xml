@@ -16,5 +16,12 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="mediaControllerTime" parent="@android:style/Widget.TextView">
+      <item name="android:textSize">12dip</item>
+      <item name="android:textColor">@android:color/black</item>
+      <item name="android:text">@string/default_time</item>
+      <item name="android:layout_centerVertical">true</item>
+    </style>
 
 </resources>

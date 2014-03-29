@@ -30,6 +30,14 @@
     <string name="linkText">Link goes here!</string>
     <string name="title_activity_detail_prog">DetailProgActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="webTv_error">Désolé, la webTV n\'est pas accessible sur votre version d\'Android</string>
+    <string name="webTv_error_network">Impossible de charger la webTV, veuillez réessayer plus tard.</string>
+    <string name="default_time">0:00</string>
+    <string name="play">play</string>
+    <string name="pause">pause</string>
+    <string name="error_network_connexion">Votre terminal n\'est actuellement pas connecté à Internet. Connectez vous à internet puis actualisez la page.</string>
+    <string name="error_video">Une erreur est survenue pendant la lecture de la vidéo.</string>
+    <string name="btn_podcast_video">Cliquez ici pour voir la vidéo</string>
 
     <string-array name="items">
         <item>Item 1</item>
