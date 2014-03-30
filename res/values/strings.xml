@@ -40,12 +40,12 @@
     <string name="btn_podcast_video">Cliquez ici pour voir la vidéo</string>
 
     <string-array name="items">
-        <item>Item 1</item>
-        <item>Item 2</item>
-        <item>Item 3</item>
-        <item>Item 4</item>
-        <item>Item 5</item>
-        <item>Item 6</item>
+        <item>News</item>
+        <item>Podcast</item>
+        <item>WebTv</item>
+        <item>Programme</item>
+        <item>Jeu</item>
+        <item>Mon Compte</item>
     </string-array>
 
     <string name="title_activity_home">HomeActivity</string>
