@@ -12,6 +12,11 @@ import android.widget.ListView;
 
 import com.azurtv.R;
 
+/**
+ * 
+ * @author Cesar
+ * 
+ */
 public class MainActivity
     extends FragmentActivity
 {
@@ -92,7 +97,7 @@ public class MainActivity
       // Comportement du bouton "Recherche"
       return true;
     case R.id.menu_settings:
-      // Comportement du bouton "Paramètres"
+      // Comportement du bouton "Paramï¿½tres"
       Intent intent_settings;
       intent_settings = new Intent(this, SettingsActivity.class);
       startActivity(intent_settings);

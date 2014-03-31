@@ -19,9 +19,13 @@ import android.widget.ImageButton;
 
 import com.azurtv.R;
 
-
- // A component which is supposed to support the HTML5 video player.
-  
+/**
+ * A component which is supposed to support the HTML5 video player.
+ * 
+ * @author Édouard Mercier
+ * @since 2012.12.01
+ */
+// Taken from http://code.google.com/p/html5webview/source/browse/trunk/HTML5WebView/src/org/itri/html5webview/HTML5WebView.java
 @SuppressLint("ViewConstructor")
 public final class HTML5WebView
     extends WebView
