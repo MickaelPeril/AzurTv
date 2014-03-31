@@ -91,7 +91,7 @@ public class SplashActivity
       // bundleprog.putSerializable("feedprog", feedprog);
 
       // launch List activity
-      Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+      Intent intent = new Intent(SplashActivity.this, HelpActivity.class);
       intent.putExtras(bundle);
       startActivity(intent);
       // Intent intent2 = new Intent(SplashActivity.this, HomeActivity.class);
