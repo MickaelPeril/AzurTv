@@ -17,7 +17,7 @@ public class HelpActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
 		
-		final TextView redaction,GALUP,emission,charay,decorte,ogcn,tierche, lefebre,general ;
+	   TextView redaction,GALUP,emission,charay,decorte,ogcn,tierche, lefebre,general ;
 		
 		
 		String html="<tr><td><h1> Le Journal</h1><p>(envoyer un message a la redaction)<br></p></td><td></a></td></tr>";
@@ -49,35 +49,28 @@ public class HelpActivity extends Activity {
 		
 		redaction.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	Intent email = new Intent(Intent.ACTION_SEND);
-        		email.setType("text/plain");
-        		email.putExtra(android.content.Intent.EXTRA_EMAIL,"email@gmail.com");
-        		email.putExtra(Intent.EXTRA_SUBJECT, "Obtenir de l'aide");
-        		email.putExtra(Intent.EXTRA_TEXT, "Saisir votre demande ici...");
-        		email.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        		startActivity(email);
-            
+            	envoiMail("aide@gmail.com");
             }
         });
 		
 		
 		GALUP.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	GALUP.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
 		
 		emission.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	emission.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
 		
 		charay.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	charay.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
@@ -85,14 +78,14 @@ public class HelpActivity extends Activity {
 
 		decorte.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	decorte.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
 		
 		ogcn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	ogcn.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
@@ -100,26 +93,34 @@ public class HelpActivity extends Activity {
 
 		tierche.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	tierche.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
 		
 		lefebre.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	lefebre.setText("Cocoa");
-            
+            	envoiMail("aide@gmail.com");
             }
         });
 		
 		general.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	general.setText("Cocoa");
+            	envoiMail("aide@gmail.com");
             
             }
         });
 		
 		
+	}
+	
+	public void envoiMail(String emaildestinataire){
+		Intent email = new Intent(Intent.ACTION_SEND);
+		email.setType("text/plain");
+		email.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{emaildestinataire});
+		email.putExtra(Intent.EXTRA_SUBJECT, "Obtenir de l'aide");
+		email.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(email);
 	}
 
 	@Override
