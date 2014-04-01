@@ -7,8 +7,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.azurtv.R;
 
@@ -52,6 +55,38 @@ public class MainActivity
     drawerItemsList = getResources().getStringArray(R.array.items);
     myDrawer = (ListView) findViewById(R.id.my_drawer);
     myDrawer.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item, drawerItemsList));
+    myDrawer.setOnItemClickListener(new OnItemClickListener()
+    {
+
+        @Override
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long id)
+        {
+        	if(id==0){
+        		itemSelector((int)id);
+        	}else if(id==1){
+        		itemSelector((int)id);
+        	}else if(id==2){
+        		itemSelector((int)id);
+        	}else if(id==3){
+        		itemSelector((int)id);
+        	}else if(id==4){
+        		itemSelector((int)id);
+        	}else if(id==5){
+        		//mon compte
+        	}    	
+        }
+        
+        public void itemSelector(int num){
+        	Intent intent2= getIntent();
+    		final Bundle b2 = intent2.getExtras();		
+    		Intent intent;
+    		intent = new Intent( MainActivity.this, MainActivity.class) ;
+    		intent.putExtras(b2);
+    		intent.putExtra("fragment", num);
+    		startActivity(intent);	       	
+        }    
+    });
+    
     // //
   }
 

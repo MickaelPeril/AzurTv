@@ -21,10 +21,6 @@ public class SplashActivity
 
   RSSFeed feed;
 
-  /*
-   * private String RSSFEEDURLprog = "http://www.azur-tv.fr/taxonomy/term/120/feed"; RSSFeed feedprog;
-   */
-
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -37,7 +33,7 @@ public class SplashActivity
     {
       // No connectivity - Show alert
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setMessage("Impossible de se connecter au serveur, \n S'il vous plaï¿½t vï¿½rifier votre connection.").setTitle("AzurTv").setCancelable(false).setPositiveButton(
+      builder.setMessage("Impossible de se connecter au serveur, \n S'il vous plaît vérifier votre connection.").setTitle("AzurTv").setCancelable(false).setPositiveButton(
           "Exit", new DialogInterface.OnClickListener()
           {
             @Override
@@ -71,10 +67,7 @@ public class SplashActivity
       // Obtain feed
       DOMParser myParser = new DOMParser();
       feed = myParser.parseXml(RSSFEEDURL);
-
-      DOMParser myParserprog = new DOMParser();
-      // feedprog = myParserprog.parseXml(RSSFEEDURLprog);
-
+      
       return null;
 
     }
@@ -87,20 +80,13 @@ public class SplashActivity
       Bundle bundle = new Bundle();
       bundle.putSerializable("feed", feed);
 
-      // Bundle bundleprog = new Bundle();
-      // bundleprog.putSerializable("feedprog", feedprog);
+     
 
       // launch List activity
-      Intent intent = new Intent(SplashActivity.this, HelpActivity.class);
+      Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
       intent.putExtras(bundle);
       startActivity(intent);
-      // Intent intent2 = new Intent(SplashActivity.this, HomeActivity.class);
-      //
-      // intent.putExtras(bundleprog);
-      // startActivity(intent2);
-      // startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-
-      // kill this activity
+ 
       finish();
     }
 

@@ -22,7 +22,7 @@
     <string name="error_podcast">Impossible de récupérer les podcasts, veuillez réessayer plus tard.</string>
     <string name="title_activity_podcast">Podcast</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="loading">Loading please wait&#8230;</string>
+    <string name="loading">Chargement, Veuillez patienter...</string>
     <string name="title">Title goes here!</string>
     <string name="date">Date goes here!</string>
     <string name="desc">Description goes here!</string>
