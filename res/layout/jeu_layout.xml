@@ -26,6 +26,7 @@
 	        android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:hint="@string/enter_name"
+			android:inputType="textEmailAddress"
 			android:layout_marginLeft="5dp"
             />
         
@@ -81,6 +82,7 @@
 	        android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:hint="@string/entrer_adress"
+			android:inputType="textEmailAddress"
 			android:layout_marginLeft="5dp"
             />
         
@@ -109,6 +111,7 @@
 	        android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:hint="@string/entrer_zip"
+			android:inputType="textEmailAddress"
 			android:layout_marginLeft="5dp"
             />
         
@@ -136,6 +139,7 @@
 	        android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:hint="@string/entrer_city"
+			android:inputType="textEmailAddress"
 			android:layout_marginLeft="5dp"
             />
         
@@ -164,6 +168,7 @@
 	        android:layout_height="wrap_content"
 			android:layout_weight="0.5"
 			android:hint="@string/entrer_answer"
+			android:inputType="textEmailAddress"
 			android:layout_marginLeft="5dp"
             />
         

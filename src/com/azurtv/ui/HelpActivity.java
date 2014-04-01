@@ -20,7 +20,7 @@ public class HelpActivity extends Activity {
 	   TextView redaction,GALUP,emission,charay,decorte,ogcn,tierche, lefebre,general ;
 		
 		
-		String html="<tr><td><h1> Le Journal</h1><p>(envoyer un message a la redaction)<br></p></td><td></a></td></tr>";
+		String html="<tr><td><h1> Le Journal</h1><p>(Envoyer un message à la rédaction)<br></p></td><td></a></td></tr>";
 		redaction= (TextView)findViewById(R.id.tv1);redaction.setText(Html.fromHtml(html));
 		
 		String html1="<tr><td>Nicolas GALUP<p>Rédacteur en Chef<br></p><p>Le Brief<br></p></td><td></a></td></tr>";
