@@ -1,25 +1,27 @@
 package com.azurtv.ui;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.azurtv.R;
 
-/**
- * 
- * @author Cesar
- * 
- */
+
 public class MainActivity
     extends FragmentActivity
 {
@@ -58,7 +60,8 @@ public class MainActivity
     myDrawer.setOnItemClickListener(new OnItemClickListener()
     {
 
-        @Override
+        @SuppressWarnings("deprecation")
+		@Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long id)
         {
         	if(id==0){
@@ -72,6 +75,10 @@ public class MainActivity
         	}else if(id==4){
         		itemSelector((int)id);
         	}else if(id==5){
+        	
+        		
+        		 showDialog(1);
+        		
         		//mon compte
         	}    	
         }
@@ -90,6 +97,69 @@ public class MainActivity
     // //
   }
 
+  
+  protected Dialog onCreateDialog(int id) {
+
+	  AlertDialog dialogDetails = null;
+
+	  
+	   LayoutInflater inflater = LayoutInflater.from(this);
+	   View dialogview = inflater.inflate(R.layout.dialog_layout, null);
+
+	   AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(this);
+	   dialogbuilder.setTitle("Login");
+	   dialogbuilder.setView(dialogview);
+	   dialogDetails = dialogbuilder.create();
+
+	 
+
+	  return dialogDetails;
+	 }
+
+	 @Override
+	 protected void onPrepareDialog(int id, Dialog dialog) {
+
+	  
+	   final AlertDialog alertDialog = (AlertDialog) dialog;
+	   Button loginbutton = (Button) alertDialog
+	     .findViewById(R.id.btn_login);
+	   Button cancelbutton = (Button) alertDialog
+	     .findViewById(R.id.btn_cancel);
+	   final EditText userName = (EditText) alertDialog
+	     .findViewById(R.id.txt_name);
+	   final EditText password = (EditText) alertDialog
+	     .findViewById(R.id.password);
+
+	   loginbutton.setOnClickListener(new View.OnClickListener() {
+
+	    @Override
+	    public void onClick(View v) {
+	     alertDialog.dismiss();
+	     Toast.makeText(
+	       MainActivity.this,
+	       "User Name : " + userName.getText().toString()
+	         + "  Password : "
+	         + password.getText().toString(),
+	       Toast.LENGTH_LONG).show();
+	    }
+	   });
+
+	   cancelbutton.setOnClickListener(new View.OnClickListener() {
+
+	    @Override
+	    public void onClick(View v) {
+	     alertDialog.dismiss();
+	    }
+	   });
+	  
+	 }
+	
+  
+  
+  
+  
+  
+  
   @Override
   public boolean onCreateOptionsMenu(Menu menu)
   {

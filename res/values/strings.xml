@@ -9,6 +9,10 @@
     <string name="menu_about">A propos</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_help">HelpActivity</string>
+    <string name="login">Connection</string>
+    <string name="cancel">Annuler</string>
+    <string name="enter_identifiant">Entrez votre identifiant</string>
+    <string name="enter_mdp">Entrez votre mot de passe</string>
     <string name="name">Nom :</string>
     <string name="enter_name">Entrez votre nom</string>
     <string name="enter_name_error">Veuillez entrer un nom svp.</string>
