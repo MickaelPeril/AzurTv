@@ -9,7 +9,7 @@
     <string name="menu_about">A propos</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_help">HelpActivity</string>
-    <string name="login">Connection</string>
+    <string name="login">Connexion</string>
     <string name="cancel">Annuler</string>
     <string name="enter_identifiant">Entrez votre identifiant</string>
     <string name="enter_mdp">Entrez votre mot de passe</string>
@@ -38,7 +38,7 @@
     <string name="error_podcast">Impossible de récupérer les podcasts, veuillez réessayer plus tard.</string>
     <string name="title_activity_podcast">Podcast</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="loading">Chargement, Veuillez patienter...</string>
+    <string name="loading">Chargement, Veuillez patienter &#8230;</string>
     <string name="title">Title goes here!</string>
     <string name="date">Date goes here!</string>
     <string name="desc">Description goes here!</string>
