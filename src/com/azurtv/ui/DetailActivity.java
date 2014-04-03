@@ -12,45 +12,45 @@ import android.widget.TextView;
 import com.azurtv.R;
 import com.azurtv.parser.RSSFeed;
 
-public class DetailActivity
-    extends Activity
-{
+public class DetailActivity extends Activity {
 
-  RSSFeed feed;
+	// Declaration de variables
+	RSSFeed feed;
 
-  TextView title;
+	TextView title;
 
-  WebView desc;
+	WebView desc;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.detail_layout);
+	@SuppressWarnings("deprecation")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.detail_layout);
 
-    // Enable the vertical fading edge (by default it is disabled)
-    ScrollView sv = (ScrollView) findViewById(R.id.sv);
-    sv.setVerticalFadingEdgeEnabled(true);
+		// mettre en visible le ScrollView car par default il est desactiver
+		ScrollView sv = (ScrollView) findViewById(R.id.sv);
+		sv.setVerticalFadingEdgeEnabled(true);
 
-    // Get the feed object and the position from the Intent
-    feed = (RSSFeed) getIntent().getExtras().get("feed");
-    int pos = getIntent().getExtras().getInt("pos");
+		// recupere les positions du "feed" depuis l'intent
+		feed = (RSSFeed) getIntent().getExtras().get("feed");
+		int pos = getIntent().getExtras().getInt("pos");
 
-    // Initialize the views
-    title = (TextView) findViewById(R.id.title);
-    desc = (WebView) findViewById(R.id.desc);
+		// Initialisation des vues
+		title = (TextView) findViewById(R.id.title);
+		desc = (WebView) findViewById(R.id.desc);
 
-    // set webview properties
-    WebSettings ws = desc.getSettings();
-    ws.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
-    ws.getPluginState();
-    ws.setPluginState(PluginState.ON);
-    ws.setJavaScriptEnabled(true);
-    ws.setBuiltInZoomControls(true);
+		// set les propriété du webView
+		WebSettings ws = desc.getSettings();
+		ws.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+		ws.getPluginState();
+		ws.setPluginState(PluginState.ON);
+		ws.setJavaScriptEnabled(true);
+		ws.setBuiltInZoomControls(true);
 
-    // Set the views
-    title.setText(feed.getItem(pos).getTitle());
-    desc.loadDataWithBaseURL("http://www.androidcentral.com/", feed.getItem(pos).getDescription(), "text/html", "UTF-8", null);
-  }
+		// Set les vues
+		title.setText(feed.getItem(pos).getTitle());
+		desc.loadDataWithBaseURL("http://www.androidcentral.com/", feed
+				.getItem(pos).getDescription(), "text/html", "UTF-8", null);
+	}
 
 }
