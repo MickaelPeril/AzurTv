@@ -190,7 +190,7 @@ public class MainActivity extends FragmentActivity {
 				((PodcastFragment) currentFragment).loadPodcast();
 			}
 			if (currentFragment instanceof ProgrammeFragment) {
-				((ProgrammeFragment) currentFragment).loadPodcast();
+				((ProgrammeFragment) currentFragment).loadProgramme();
 			}
 
 			return true;
