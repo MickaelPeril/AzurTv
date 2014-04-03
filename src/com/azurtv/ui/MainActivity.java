@@ -107,7 +107,7 @@ public class MainActivity
 	   View dialogview = inflater.inflate(R.layout.dialog_layout, null);
 
 	   AlertDialog.Builder dialogbuilder = new AlertDialog.Builder(this);
-	   dialogbuilder.setTitle("Login");
+	   dialogbuilder.setTitle("Connexion");
 	   dialogbuilder.setView(dialogview);
 	   dialogDetails = dialogbuilder.create();
 
@@ -134,6 +134,7 @@ public class MainActivity
 
 	    @Override
 	    public void onClick(View v) {
+	    	
 	     alertDialog.dismiss();
 	     Toast.makeText(
 	       MainActivity.this,
@@ -153,12 +154,7 @@ public class MainActivity
 	   });
 	  
 	 }
-	
-  
-  
-  
-  
-  
+
   
   @Override
   public boolean onCreateOptionsMenu(Menu menu)
@@ -173,7 +169,7 @@ public class MainActivity
     switch (item.getItemId())
     {
     case R.id.menu_about:
-      // Comportement du bouton "� Propos"
+      // Comportement du bouton "a Propos"
       Intent intent_about;
       intent_about = new Intent(this, AboutActivity.class);
       startActivity(intent_about);
@@ -196,6 +192,11 @@ public class MainActivity
       {
         ((PodcastFragment) currentFragment).loadPodcast();
       }
+      if (currentFragment instanceof ProgrammeFragment)
+      {
+        ((ProgrammeFragment) currentFragment).loadPodcast();
+      }
+
 
       return true;
     case R.id.menu_search:
