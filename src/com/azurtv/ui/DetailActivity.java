@@ -27,7 +27,7 @@ public class DetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detail_layout);
 
-		// mettre en visible le ScrollView car par default il est desactiver
+		// mettre en visible le ScrollView, car par default il est desactiver
 		ScrollView sv = (ScrollView) findViewById(R.id.sv);
 		sv.setVerticalFadingEdgeEnabled(true);
 
