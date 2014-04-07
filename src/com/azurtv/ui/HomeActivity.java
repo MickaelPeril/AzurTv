@@ -1,6 +1,7 @@
 package com.azurtv.ui;
 
 import com.azurtv.R;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,11 +20,11 @@ public class HomeActivity extends Activity {
 		final Button news, podcast, webtv, programme, jeu;
 
 		// Declaration de variables
-		news = (Button) findViewById(R.id.button1);
-		podcast = (Button) findViewById(R.id.button2);
-		webtv = (Button) findViewById(R.id.button3);
-		programme = (Button) findViewById(R.id.button4);
-		jeu = (Button) findViewById(R.id.button5);
+		news = (Button) findViewById(R.id.News);
+		podcast = (Button) findViewById(R.id.Podcast);
+		webtv = (Button) findViewById(R.id.WebTv);
+		programme = (Button) findViewById(R.id.ProgrammeTV);
+		jeu = (Button) findViewById(R.id.Jeu);
 
 		// Comportement des boutons
 

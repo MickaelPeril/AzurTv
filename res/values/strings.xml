@@ -5,14 +5,12 @@
     <string name="action_settings">Paramètres</string>
     <string name="menu_search">Recherche</string>
     <string name="menu_refresh">Rafraichir</string>
-    <string name="menu_help">Aide</string>
+    <string name="menu_contact">Contact</string>
     <string name="menu_about">A propos</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="title_activity_help">HelpActivity</string>
     <string name="login">Connexion</string>
     <string name="cancel">Annuler</string>
-    <string name="enter_identifiant">Entrez votre identifiant</string>
-    <string name="enter_mdp">Entrez votre mot de passe</string>
+    <string name="enter_identifiant">Identifiant</string>
+    <string name="enter_mdp">Mot de passe</string>
     <string name="name">Nom :</string>
     <string name="enter_name">Entrez votre nom</string>
     <string name="enter_name_error">Veuillez entrer un nom svp.</string>
@@ -36,16 +34,18 @@
     <string name="after_send_message">Merci d\'avoir rempli le formulaire.</string>
     <string name="loading_podcast">Chargement des podcasts</string>
     <string name="error_podcast">Impossible de récupérer les podcasts, veuillez réessayer plus tard.</string>
+    <string name="error_programme">Impossible de récupérer les programmes, veuillez réessayer plus tard.</string>
     <string name="title_activity_podcast">Podcast</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_about">A propos</string>
+    <string name="title_activity_contact">Contact</string>
+    <string name="title_activity_home">Menu</string>
+    <string name="title_activity_detail_news">News</string>
+    <string name="title_activity_detail_prog">Detail du Programme</string>
     <string name="loading">Chargement, Veuillez patienter &#8230;</string>
-    <string name="title">Title goes here!</string>
-    <string name="date">Date goes here!</string>
-    <string name="desc">Description goes here!</string>
-    <string name="linkLabel">Link to web: </string>
-    <string name="linkText">Link goes here!</string>
-    <string name="title_activity_detail_prog">DetailProgActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title">Titre</string>
+    <string name="date">Date</string>
+    <string name="desc">Description</string>
     <string name="webTv_error">Désolé, la webTV n\'est pas accessible sur votre version d\'Android</string>
     <string name="webTv_error_network">Impossible de charger la webTV, veuillez réessayer plus tard.</string>
     <string name="default_time">0:00</string>
@@ -64,6 +64,6 @@
         <item>Mon Compte</item>
     </string-array>
 
-    <string name="title_activity_home">HomeActivity</string>
+   
 
 </resources>

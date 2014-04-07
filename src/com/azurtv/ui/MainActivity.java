@@ -171,10 +171,10 @@ public class MainActivity extends FragmentActivity {
 			intent_about = new Intent(this, AboutActivity.class);
 			startActivity(intent_about);
 			return true;
-		case R.id.menu_help:
+		case R.id.menu_contact:
 			// Comportement du bouton "Aide"
 			Intent intent_help;
-			intent_help = new Intent(this, HelpActivity.class);
+			intent_help = new Intent(this, ContactActivity.class);
 			startActivity(intent_help);
 			return true;
 		case R.id.menu_refresh:
@@ -193,16 +193,7 @@ public class MainActivity extends FragmentActivity {
 				((ProgrammeFragment) currentFragment).loadProgramme();
 			}
 
-			return true;
-		case R.id.menu_search:
-			// Comportement du bouton "Recherche"
-			return true;
-		case R.id.menu_settings:
-			// Comportement du bouton "Param�tres"
-			Intent intent_settings;
-			intent_settings = new Intent(this, SettingsActivity.class);
-			startActivity(intent_settings);
-			return true;
+			return true;		
 		default:
 			return super.onOptionsItemSelected(item);
 		}

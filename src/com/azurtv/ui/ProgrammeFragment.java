@@ -137,7 +137,7 @@ public class ProgrammeFragment  extends Fragment {
 					
 					// en cas d'erreur, on cache le chargement et on affiche un message d'erreur
 					loadingLayout.setVisibility(View.GONE);
-					messageTextView.setText(activity.getString(R.string.error_podcast));
+					messageTextView.setText(activity.getString(R.string.error_programme));
 			        messageTextView.setVisibility(View.VISIBLE);
 				}
 			});

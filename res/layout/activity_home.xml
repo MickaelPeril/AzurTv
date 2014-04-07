@@ -6,56 +6,69 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#ffffff"
     tools:context=".HomeActivity" >
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="25dp"
-        android:text="WebTV"
-         />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+     <Button
+        android:id="@+id/News"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="Podcast"
-         />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button5"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
-        android:text="News"
+       android:background="@xml/button_design"
+       android:textColor="#ffffff"
+        android:text="News" />
+     
+      <Button
+        android:id="@+id/Podcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/News"
+        android:layout_alignRight="@+id/News"
+        android:layout_below="@+id/News"
+        android:layout_marginTop="32dp"
+       android:background="@xml/button_design"
+       android:textColor="#ffffff"
+        android:text="Podcast" />
+     
+     
+    <Button
+        android:id="@+id/WebTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Podcast"
+        android:layout_alignRight="@+id/Podcast"
+        android:layout_below="@+id/Podcast"
+        android:layout_marginTop="32dp"
+         android:background="@xml/button_design"
+         android:textColor="#ffffff"
+        android:text="WebTV"
         
-         />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="41dp"
-        android:text="ProgrammeTV"
-         />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button3"
-        android:layout_below="@+id/button4"
-        android:layout_marginTop="35dp"
-        android:text="Jeu"
         />
+         
+	<Button
+        android:id="@+id/ProgrammeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/WebTv"
+        android:layout_alignRight="@+id/WebTv"
+        android:layout_below="@+id/WebTv"
+        android:layout_marginTop="32dp"
+         android:background="@xml/button_design"
+         android:textColor="#ffffff"
+        android:text="ProgrammeTV" />
+
+    <Button
+        android:id="@+id/Jeu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProgrammeTV"
+        android:layout_alignRight="@+id/ProgrammeTV"
+        android:layout_below="@+id/ProgrammeTV"
+        android:layout_marginTop="32dp"
+         android:background="@xml/button_design"
+         android:textColor="#ffffff"
+        android:text="Jeu" />
 
 </RelativeLayout>

@@ -38,12 +38,8 @@
             android:label="@string/title_activity_about" >
         </activity>
         <activity
-            android:name="com.azurtv.ui.HelpActivity"
-            android:label="@string/title_activity_help" >
-        </activity>
-        <activity
-            android:name="com.azurtv.ui.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:name="com.azurtv.ui.ContactActivity"
+            android:label="@string/title_activity_contact" >
         </activity>
         <activity
             android:name="com.azurtv.ui.PodcastActivity"
@@ -64,12 +60,15 @@
           android:screenOrientation="landscape"
           android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
          ></activity>
-        <activity android:name="com.azurtv.ui.DetailNewsActivity" >
+        <activity
+             android:name="com.azurtv.ui.DetailNewsActivity" 
+             android:label="@string/title_activity_detail_news" >
         </activity>
         <activity
             android:name="com.azurtv.ui.DetailProgActivity"
             android:label="@string/title_activity_detail_prog" >
         </activity>
+        
         <activity
             android:name="com.azurtv.ui.HomeActivity"
             android:label="@string/title_activity_home" >

@@ -9,7 +9,8 @@
         android:id="@+id/thumb"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:contentDescription="@string/app_name" />
+         android:contentDescription="@string/app_name"
+        />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"

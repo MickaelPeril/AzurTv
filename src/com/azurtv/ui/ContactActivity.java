@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.azurtv.R;
 
-public class HelpActivity extends Activity {
+public class ContactActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
