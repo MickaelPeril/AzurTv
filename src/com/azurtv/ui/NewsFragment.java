@@ -22,6 +22,7 @@ import com.azurtv.parser.RSSFeed;
 
 public class NewsFragment extends Fragment {
 
+	//Declaration de variable
 	Application myApp;
 
 	RSSFeed feed;
