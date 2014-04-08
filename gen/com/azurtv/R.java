@@ -35,7 +35,8 @@ public final class R {
         public static final int ic_news=0x7f020008;
         public static final int ic_pause_pressed=0x7f020009;
         public static final int ic_play_pressed=0x7f02000a;
-        public static final int video_icon=0x7f02000b;
+        public static final int splashscreen=0x7f02000b;
+        public static final int video_icon=0x7f02000c;
     }
     public static final class id {
         public static final int Jeu=0x7f0a000d;
