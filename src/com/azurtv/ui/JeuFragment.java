@@ -40,7 +40,10 @@ public class JeuFragment extends Fragment {
 		zipEditText = (EditText) view.findViewById(R.id.zipEditText);
 		cityEditText = (EditText) view.findViewById(R.id.cityEditText);
 		answerEditText = (EditText) view.findViewById(R.id.answerEditText);
-
+		
+		//enleve le focus sur l'edittext name.
+		nameEditText.clearFocus();
+		
 		sendButton = (Button) view.findViewById(R.id.sendButton);
 
 		// definition d'une action sur le click du bouton

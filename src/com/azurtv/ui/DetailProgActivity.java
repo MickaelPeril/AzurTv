@@ -9,7 +9,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.Window;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class DetailProgActivity extends Activity {
@@ -31,8 +35,9 @@ public class DetailProgActivity extends Activity {
 		// on recupere les elements graphiques
 		titleTextView = (TextView) findViewById(R.id.podcastTitle);
 		contentWebView = (WebView) findViewById(R.id.contentWebView);
+		contentWebView.setVerticalScrollBarEnabled(false);
 		contentWebView.getSettings().setJavaScriptEnabled(true);
-
+		
 		fillWithData();
 	}
 
@@ -46,21 +51,20 @@ public class DetailProgActivity extends Activity {
 			title = intent.getStringExtra("podcastTitle");
 			description = intent.getStringExtra("podcastDescription");
 
-			// ensuite, on va changer la taille de la video contenue dans la
-			// description pour un affichage plus agreable.
-
-			// on recupere des informations sur la taille de l'ecran du
-			// smartphone
-			Display display = getWindowManager().getDefaultDisplay();
-			DisplayMetrics metrics = new DisplayMetrics();
-			display.getMetrics(metrics);
-
-
+			//le contenus du webview prends la taille de l'ecran
+			 WebSettings settings =contentWebView.getSettings();
+			    settings.setLoadWithOverviewMode(true);
+			    settings.setUseWideViewPort(true);
+			    settings.setDomStorageEnabled(true);
+			    settings.setJavaScriptEnabled(true);
+			    settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 		}
+	
 		// et on affiche les données dans les elements graphiques
 		titleTextView.setText(title);
 		contentWebView.loadData(description, "text/html; charset=UTF-8", null);
-
+		//permet le zoom sur le webview
+		contentWebView.getSettings().setBuiltInZoomControls(true);	
 	}
 
 	
