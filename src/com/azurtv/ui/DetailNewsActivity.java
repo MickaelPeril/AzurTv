@@ -14,11 +14,9 @@ import com.azurtv.parser.RSSFeed;
 
 public class DetailNewsActivity extends Activity {
 
-	//Declaration de variables
+	//Declaration des Attributs
 	RSSFeed feed;
-
 	TextView title;
-
 	WebView desc;
 
 	@SuppressWarnings("deprecation")
@@ -35,11 +33,11 @@ public class DetailNewsActivity extends Activity {
 		feed = (RSSFeed) getIntent().getExtras().get("feed");
 		int pos = getIntent().getExtras().getInt("pos");
 
-		// Initialisation des vues
+		// Initialisation les elements de la vue
 		title = (TextView) findViewById(R.id.title);
 		desc = (WebView) findViewById(R.id.desc);
 
-		// set les propriété du webView
+		// on met des propriété sur le webview
 		WebSettings ws = desc.getSettings();
 		ws.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		ws.getPluginState();
@@ -47,10 +45,9 @@ public class DetailNewsActivity extends Activity {
 		ws.setJavaScriptEnabled(true);
 		ws.setBuiltInZoomControls(true);
 
-		// Set les vues
-		title.setText(feed.getItem(pos).getTitle());
-		desc.loadDataWithBaseURL("http://www.azur-tv.fr/news.xml", feed
-				.getItem(pos).getDescription(), "text/html", "UTF-8", null);
+		// on affiche les elements dans la vue
+		title.setText(feed.getItem(pos).getTitle());//textview
+		desc.loadDataWithBaseURL("http://www.azur-tv.fr/news.xml", feed.getItem(pos).getDescription(), "text/html", "UTF-8", null);//webview
 	}
 
 }

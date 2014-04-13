@@ -22,11 +22,9 @@ import com.azurtv.parser.RSSFeed;
 
 public class NewsFragment extends Fragment {
 
-	//Declaration de variable
+	//Declaration des Attributs
 	Application myApp;
-
 	RSSFeed feed;
-
 	ListView lv;
 
 	CustomListAdapter adapter;
@@ -43,43 +41,38 @@ public class NewsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// Get the view from fragmenttab1.xml
+		// On recupere la vue de fragmenttab1.xml (vue news)
 		View view = inflater.inflate(R.layout.news_layout, container, false);
-		// /
 
 		myApp = activity.getApplication();
 
-		// Get feed form the file
+		// on recupere le feed qui vient de l'activity de ce fragment ( MainActivity )
 		feed = (RSSFeed) activity.getIntent().getExtras().get("feed");
 
-		// Initialize the variables:
+		//on initialise la listview pour les news
 		lv = (ListView) view.findViewById(R.id.listViewNews);
 		lv.setVerticalFadingEdgeEnabled(true);
 
-		// Set an Adapter to the ListView
+		// Adapter sur le listview
 		adapter = new CustomListAdapter(this);
 		lv.setAdapter(adapter);
 
-		// Set on item click listener to the ListView
+		// click sur les differentes news
 		lv.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				// actions to be performed when a list item clicked
+				// l'action quand on clique sur un item
 				int pos = arg2;
-
+				//on envois le feed à l'activity detail news pour afficher en detail la news
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("feed", feed);
 				Intent intent = new Intent(activity, DetailNewsActivity.class);
 				intent.putExtras(bundle);
 				intent.putExtra("pos", pos);
 				startActivity(intent);
-
 			}
 		});
-
-		// /
 		return view;
 	}
 
@@ -91,23 +84,17 @@ public class NewsFragment extends Fragment {
 	}
 
 	class CustomListAdapter extends BaseAdapter {
-
 		private final LayoutInflater layoutInflater;
-
 		public ImageLoader imageLoader;
 
 		public CustomListAdapter(NewsFragment newsfragment) {
-
-			layoutInflater = (LayoutInflater) newsfragment.activity
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			imageLoader = new ImageLoader(
-					newsfragment.activity.getApplicationContext());
+			layoutInflater = (LayoutInflater) newsfragment.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			imageLoader = new ImageLoader(newsfragment.activity.getApplicationContext());
 		}
 
 		@Override
 		public int getCount() {
-
-			// Set the total list item count
+			// retourne le nombre d'item de la liste
 			return feed.getItemCount();
 		}
 
@@ -124,26 +111,24 @@ public class NewsFragment extends Fragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 
-			// Inflate the item layout and set the views
+			// on met en place la vue
 			View listItem = convertView;
 			int pos = position;
 			if (listItem == null) {
 				listItem = layoutInflater.inflate(R.layout.list_item, null);
 			}
 
-			// Initialize the views in the layout
+			// on initialise les elements de la vue
 			ImageView iv = (ImageView) listItem.findViewById(R.id.thumb);
 			TextView tvTitle = (TextView) listItem.findViewById(R.id.title);
 			TextView tvDate = (TextView) listItem.findViewById(R.id.date);
 
-			// Set the views in the layout
+			// on affiche les elements
 			imageLoader.DisplayImage(feed.getItem(pos).getImage(), iv);
 			tvTitle.setText(feed.getItem(pos).getTitle());
 			tvDate.setText(feed.getItem(pos).getDate());
 
 			return listItem;
 		}
-
 	}
-
 }

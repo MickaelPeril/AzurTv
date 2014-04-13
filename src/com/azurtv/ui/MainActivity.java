@@ -22,13 +22,11 @@ import com.azurtv.R;
 
 public class MainActivity extends FragmentActivity {
 
-	//Declaration de variables
+	/*Declaration des Attributs*/
 	private ViewPagerAdapter viewPagerAdapter = null;
-
 	private ViewPager viewPager = null;
 
 	private String[] drawerItemsList;
-
 	private ListView myDrawer;
 
 	public int nbFragment;
@@ -39,10 +37,10 @@ public class MainActivity extends FragmentActivity {
 		// recupere la vue de  activity_main.xml
 		setContentView(R.layout.activity_main);
 
-		// localise le viewpager dans  activity_main.xml
+		// localise le viewpager dans activity_main.xml
 		viewPager = (ViewPager) findViewById(R.id.pager);
 
-		// Appel de la methodes ViewPager
+		// On met en place le viewPager
 		viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 		viewPager.setAdapter(viewPagerAdapter);
 		
@@ -74,13 +72,11 @@ public class MainActivity extends FragmentActivity {
 				} else if (id == 4) {
 					itemSelector((int) id);
 				} else if (id == 5) {
-
 					showDialog(1);
-
 				}
 			}
 
-			// aapel du bon fragment lors de l'appui sur un item
+			//appel du bon fragment lors de l'appui sur un item
 			public void itemSelector(int num) {
 				Intent intent2 = getIntent();
 				final Bundle b2 = intent2.getExtras();
@@ -91,12 +87,10 @@ public class MainActivity extends FragmentActivity {
 				startActivity(intent);
 			}
 		});
-
 	}
 
 	// lance la popup qui permet la connexion a l'user
 	protected Dialog onCreateDialog(int id) {
-
 		AlertDialog dialogDetails = null;
 
 		// Appel de layout du popup
