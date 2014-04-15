@@ -31,299 +31,271 @@ import android.widget.Toast;
 import com.azurtv.R;
 import com.azurtv.network.NetworkUtil;
 
-public class PodcastActivity
-    extends Activity
-    implements OnClickListener, OnPreparedListener, OnCompletionListener, OnErrorListener
-{
-  private final Pattern videoPattern = Pattern.compile("<video(.*?)</video>", Pattern.DOTALL);
+public class PodcastActivity extends Activity implements OnClickListener,
+		OnPreparedListener, OnCompletionListener, OnErrorListener {
+	private final Pattern videoPattern = Pattern.compile("<video(.*?)</video>",
+			Pattern.DOTALL);
 
-  private final Pattern videoSrcPattern = Pattern.compile("src=\"(.*?)\"", Pattern.DOTALL);
+	private final Pattern videoSrcPattern = Pattern.compile("src=\"(.*?)\"",
+			Pattern.DOTALL);
 
-  private TextView titleTextView;
+	private TextView titleTextView;
 
-  private WebView contentWebView;
+	private WebView contentWebView;
 
-  private String title;
+	private String title, description, videoUrl;
 
-  private String description;
+	private Display display;
 
-  private String videoUrl;
+	private Handler handler;
 
-  private Display display;
+	private Runnable runnable;
 
-  private Handler handler;
+	private SurfaceView video;
 
-  private Runnable runnable;
+	private SurfaceHolder holder;
 
-  private SurfaceView video;
+	private MediaPlayer player;
 
-  private SurfaceHolder holder;
+	private ImageButton play, fullscreen;
 
-  private MediaPlayer player;
+	private TextView currentPosition, duration;
 
-  private ImageButton play;
+	private SeekBar seekBar;
 
-  private ImageButton fullscreen;
+	@SuppressWarnings("deprecation")
+	@SuppressLint("SetJavaScriptEnabled")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
-  private TextView currentPosition;
+		// on set la vue a afficher
+		setContentView(R.layout.activity_podcast);
 
-  private TextView duration;
+		display = getWindowManager().getDefaultDisplay();
 
-  private SeekBar seekBar;
+		handler = new Handler();
+		runnable = new Runnable() {
+			@Override
+			public void run() {
+				currentPosition.setText(computeCurrentPosition());
+				seekBar.setProgress(player.getCurrentPosition() / 1000);
+				startVideo();
+			}
+		};
 
-  @SuppressWarnings("deprecation")
-  @SuppressLint("SetJavaScriptEnabled")
-  @Override
-  protected void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
+		// on recupere les elements graphiques
+		titleTextView = (TextView) findViewById(R.id.podcastTitle);
 
-    // on set la vue a afficher
-    setContentView(R.layout.activity_podcast);
+		contentWebView = (WebView) findViewById(R.id.contentWebView);
+		contentWebView.setVerticalScrollBarEnabled(false);
+		contentWebView.getSettings().setJavaScriptEnabled(true);
 
-    display = getWindowManager().getDefaultDisplay();
+		final int videoHeight = (260 * display.getWidth()) / 460;
 
-    handler = new Handler();
-    runnable = new Runnable()
-    {
-      @Override
-      public void run()
-      {
-        currentPosition.setText(computeCurrentPosition());
-        seekBar.setProgress(player.getCurrentPosition() / 1000);
-        startVideo();
-      }
-    };
+		video = (SurfaceView) findViewById(R.id.video);
+		video.setLayoutParams(new RelativeLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, videoHeight));
+		holder = video.getHolder();
 
-    // on recupere les elements graphiques
-    titleTextView = (TextView) findViewById(R.id.podcastTitle);
+		currentPosition = (TextView) findViewById(R.id.currentPosition);
+		duration = (TextView) findViewById(R.id.duration);
 
-    contentWebView = (WebView) findViewById(R.id.contentWebView);
-    contentWebView.setVerticalScrollBarEnabled(false);
-    contentWebView.getSettings().setJavaScriptEnabled(true);
+		seekBar = (SeekBar) findViewById(R.id.seekBar);
+		seekBar.setEnabled(false);
 
-    final int videoHeight = (260 * display.getWidth()) / 460;
+		play = (ImageButton) findViewById(R.id.play);
+		play.setOnClickListener(this);
 
-    video = (SurfaceView) findViewById(R.id.video);
-    video.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, videoHeight));
-    holder = video.getHolder();
+		fullscreen = (ImageButton) findViewById(R.id.fullscreen);
+		fullscreen.setOnClickListener(this);
 
-    currentPosition = (TextView) findViewById(R.id.currentPosition);
-    duration = (TextView) findViewById(R.id.duration);
+		fillWithData();
+	}
 
-    seekBar = (SeekBar) findViewById(R.id.seekBar);
-    seekBar.setEnabled(false);
+	@Override
+	public void onResume() {
+		super.onResume();
+		initVideo();
+	}
 
-    play = (ImageButton) findViewById(R.id.play);
-    play.setOnClickListener(this);
+	@Override
+	public void onPause() {
+		super.onPause();
+		pauseVideo();
+		player.setOnPreparedListener(null);
+		player.setOnErrorListener(null);
+		player.setOnCompletionListener(null);
+		player.reset();
+	}
 
-    fullscreen = (ImageButton) findViewById(R.id.fullscreen);
-    fullscreen.setOnClickListener(this);
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		player.release();
+	}
 
-    fillWithData();
-  }
+	@Override
+	public void onPrepared(final MediaPlayer mp) {
+		player.setDisplay(holder);
+		updateVideoInformation();
+		// player.start();
+		// startVideo();
+		// updatePlay();
 
-  @Override
-  public void onResume()
-  {
-    super.onResume();
-    initVideo();
-  }
+		play.setEnabled(true);
+	}
 
-  @Override
-  public void onPause()
-  {
-    super.onPause();
-    pauseVideo();
-    player.setOnPreparedListener(null);
-    player.setOnErrorListener(null);
-    player.setOnCompletionListener(null);
-    player.reset();
-  }
+	@Override
+	public void onCompletion(final MediaPlayer mp) {
+		pauseVideo();
+		seekBar.setProgress(0);
+		currentPosition.setText(getString(R.string.default_time));
+		player.seekTo(0);
+	}
 
-  @Override
-  public void onDestroy()
-  {
-    super.onDestroy();
-    player.release();
-  }
+	@Override
+	public boolean onError(final MediaPlayer mp, final int what, final int extra) {
+		player.setOnPreparedListener(null);
+		player.setOnErrorListener(null);
+		player.setOnCompletionListener(null);
 
-  @Override
-  public void onPrepared(final MediaPlayer mp)
-  {
-    player.setDisplay(holder);
-    updateVideoInformation();
-    // player.start();
-    // startVideo();
-    // updatePlay();
+		if (NetworkUtil.isOnline(this)) {
+			Toast.makeText(this, getString(R.string.error_video),
+					Toast.LENGTH_LONG).show();
+		} else {
+			Toast.makeText(this, getString(R.string.error_network_connexion),
+					Toast.LENGTH_LONG).show();
+		}
 
-    play.setEnabled(true);
-  }
+		return false;
+	}
 
-  @Override
-  public void onCompletion(final MediaPlayer mp)
-  {
-    pauseVideo();
-    seekBar.setProgress(0);
-    currentPosition.setText(getString(R.string.default_time));
-    player.seekTo(0);
-  }
+	private void fillWithData() {
 
-  @Override
-  public boolean onError(final MediaPlayer mp, final int what, final int extra)
-  {
-    player.setOnPreparedListener(null);
-    player.setOnErrorListener(null);
-    player.setOnCompletionListener(null);
+		Intent intent = getIntent();
 
-    if (NetworkUtil.isOnline(this))
-    {
-      Toast.makeText(this, getString(R.string.error_video), Toast.LENGTH_LONG).show();
-    }
-    else
-    {
-      Toast.makeText(this, getString(R.string.error_network_connexion), Toast.LENGTH_LONG).show();
-    }
+		if (intent != null) {
+			// on recupere les donnees stoques lors de l'appel
+			title = intent.getStringExtra("podcastTitle");
+			description = intent.getStringExtra("podcastDescription");
 
-    return false;
-  }
+			removeVideoFromDescription();
 
-  private void fillWithData()
-  {
+			titleTextView.setText(title);
+			contentWebView.loadData(description, "text/html; charset=UTF-8",
+					null);
+		}
+	}
 
-    Intent intent = getIntent();
+	// cette methode est appele lorque la configuration de l'ecran change (par
+	// exemple quand l'ecran est tourne)
+	// quand ca arrive, on re-appelle fillWithData pour recalculer la taille de
+	// la video et l'afficher correctement
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		fillWithData();
+	}
 
-    if (intent != null)
-    {
-      // on recupere les donnees stoques lors de l'appel
-      title = intent.getStringExtra("podcastTitle");
-      description = intent.getStringExtra("podcastDescription");
+	@Override
+	public void onClick(View view) {
+		if (view.equals(fullscreen)) {
+			final Intent intent = new Intent(this, VideoPlayerActivity.class);
+			intent.putExtra(HTML5WebView.VIDEO_URL, videoUrl);
+			startActivity(intent);
+		} else if (view.equals(play)) {
+			if (getString(R.string.play).equals(play.getTag())) {
+				player.start();
+				startVideo();
+				updatePlay();
+			} else {
+				pauseVideo();
+			}
+		}
+	}
 
-      removeVideoFromDescription();
+	private void initVideo() {
+		player = new MediaPlayer();
+		play.setEnabled(false);
+		play.setTag(getString(R.string.play));
+		play.setImageResource(R.drawable.ic_play_pressed);
 
-      titleTextView.setText(title);
-      contentWebView.loadData(description, "text/html; charset=UTF-8", null);
-    }
-  }
+		try {
+			player.setDataSource(videoUrl);
+		} catch (final Exception e) {
+			Toast.makeText(this, getString(R.string.error_video),
+					Toast.LENGTH_LONG).show();
+		}
 
-  // cette methode est appele lorque la configuration de l'ecran change (par exemple quand l'ecran est tourne)
-  // quand ca arrive, on re-appelle fillWithData pour recalculer la taille de la video et l'afficher correctement
-  @Override
-  public void onConfigurationChanged(Configuration newConfig)
-  {
-    super.onConfigurationChanged(newConfig);
-    fillWithData();
-  }
+		player.setOnPreparedListener(this);
+		player.setOnCompletionListener(this);
+		player.setOnErrorListener(this);
+		player.prepareAsync();
+	}
 
-  @Override
-  public void onClick(View view)
-  {
-    if (view.equals(fullscreen))
-    {
-      final Intent intent = new Intent(this, VideoPlayerActivity.class);
-      intent.putExtra(HTML5WebView.VIDEO_URL, videoUrl);
-      startActivity(intent);
-    }
-    else if (view.equals(play))
-    {
-      if (getString(R.string.play).equals(play.getTag()))
-      {
-        player.start();
-        startVideo();
-        updatePlay();
-      }
-      else
-      {
-        pauseVideo();
-      }
-    }
-  }
+	private void updateVideoInformation() {
+		duration.setText(computeDuration());
+		seekBar.setMax(player.getDuration() / 1000);
+	}
 
-  private void initVideo()
-  {
-    player = new MediaPlayer();
-    play.setEnabled(false);
-    play.setTag(getString(R.string.play));
-    play.setImageResource(R.drawable.ic_play_pressed);
+	private void updatePlay() {
+		if (getString(R.string.play).equals(play.getTag())) {
+			play.setTag(getString(R.string.pause));
+			play.setImageResource(R.drawable.ic_pause_pressed);
+		} else {
+			play.setTag(getString(R.string.play));
+			play.setImageResource(R.drawable.ic_play_pressed);
+		}
+	}
 
-    try
-    {
-      player.setDataSource(videoUrl);
-    }
-    catch (final Exception e)
-    {
-      Toast.makeText(this, getString(R.string.error_video), Toast.LENGTH_LONG).show();
-    }
+	private String computeCurrentPosition() {
+		final int currentPosition = player.getCurrentPosition();
+		return String.format(
+				Locale.getDefault(),
+				"%d:%02d",
+				TimeUnit.MILLISECONDS.toMinutes(currentPosition),
+				TimeUnit.MILLISECONDS.toSeconds(currentPosition)
+						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
+								.toMinutes(currentPosition)));
+	}
 
-    player.setOnPreparedListener(this);
-    player.setOnCompletionListener(this);
-    player.setOnErrorListener(this);
-    player.prepareAsync();
-  }
+	private String computeDuration() {
+		final int duration = player.getDuration();
+		return String.format(
+				Locale.getDefault(),
+				"%d:%02d",
+				TimeUnit.MILLISECONDS.toMinutes(duration),
+				TimeUnit.MILLISECONDS.toSeconds(duration)
+						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
+								.toMinutes(duration)));
+	}
 
-  private void updateVideoInformation()
-  {
-    duration.setText(computeDuration());
-    seekBar.setMax(player.getDuration() / 1000);
-  }
+	private void startVideo() {
+		handler.postDelayed(runnable, 500);
+	}
 
-  private void updatePlay()
-  {
-    if (getString(R.string.play).equals(play.getTag()))
-    {
-      play.setTag(getString(R.string.pause));
-      play.setImageResource(R.drawable.ic_pause_pressed);
-    }
-    else
-    {
-      play.setTag(getString(R.string.play));
-      play.setImageResource(R.drawable.ic_play_pressed);
-    }
-  }
+	private void pauseVideo() {
+		player.pause();
+		updatePlay();
+		handler.removeCallbacks(runnable);
+	}
 
-  private String computeCurrentPosition()
-  {
-    final int currentPosition = player.getCurrentPosition();
-    return String.format(Locale.getDefault(), "%d:%02d", TimeUnit.MILLISECONDS.toMinutes(currentPosition),
-        TimeUnit.MILLISECONDS.toSeconds(currentPosition) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(currentPosition)));
-  }
+	private void removeVideoFromDescription() {
+		final Matcher videoMatcher = videoPattern.matcher(description);
 
-  private String computeDuration()
-  {
-    final int duration = player.getDuration();
-    return String.format(Locale.getDefault(), "%d:%02d", TimeUnit.MILLISECONDS.toMinutes(duration),
-        TimeUnit.MILLISECONDS.toSeconds(duration) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
-  }
+		if (videoMatcher.find()) {
+			final String videoBalise = videoMatcher.group();
+			description = description.replace(videoBalise, "");
 
-  private void startVideo()
-  {
-    handler.postDelayed(runnable, 500);
-  }
+			final Matcher videoUrlMatcher = videoSrcPattern
+					.matcher(videoBalise);
 
-  private void pauseVideo()
-  {
-    player.pause();
-    updatePlay();
-    handler.removeCallbacks(runnable);
-  }
-
-  private void removeVideoFromDescription()
-  {
-    final Matcher videoMatcher = videoPattern.matcher(description);
-
-    if (videoMatcher.find())
-    {
-      final String videoBalise = videoMatcher.group();
-      description = description.replace(videoBalise, "");
-
-      final Matcher videoUrlMatcher = videoSrcPattern.matcher(videoBalise);
-
-      if (videoUrlMatcher.find())
-      {
-        videoUrl = videoUrlMatcher.group();
-        videoUrl = videoUrl.replace("src=", "");
-        videoUrl = videoUrl.replaceAll("\"", "");
-      }
-    }
-  }
+			if (videoUrlMatcher.find()) {
+				videoUrl = videoUrlMatcher.group();
+				videoUrl = videoUrl.replace("src=", "");
+				videoUrl = videoUrl.replaceAll("\"", "");
+			}
+		}
+	}
 }

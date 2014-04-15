@@ -81,6 +81,7 @@ public class NewsFragment extends Fragment {
 		super.onDestroy();
 		adapter.imageLoader.clearCache();
 		adapter.notifyDataSetChanged();
+		
 	}
 
 	class CustomListAdapter extends BaseAdapter {

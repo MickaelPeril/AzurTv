@@ -15,6 +15,7 @@ import com.azurtv.parser.RSSFeed;
 
 public class SplashActivity extends Activity
 {
+	// recuperation du xml
   private final String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
   RSSFeed feed;
 

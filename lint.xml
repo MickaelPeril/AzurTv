@@ -3,5 +3,6 @@
     <issue id="SetJavaScriptEnabled">
         <ignore path="src/com/azurtv/ui/DetailActivity.java" />
         <ignore path="src/com/azurtv/ui/DetailNewsActivity.java" />
+        <ignore path="src/com/azurtv/ui/DetailProgActivity.java" />
     </issue>
 </lint>

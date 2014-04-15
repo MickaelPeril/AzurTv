@@ -7,13 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class DetailProgActivity extends Activity {
@@ -22,7 +17,7 @@ public class DetailProgActivity extends Activity {
 	private TextView titleTextView = null;
 	private WebView contentWebView = null;
 
-	private String title = null;;
+	private String title = null;
 	private String description = null;
 
 	@SuppressLint("SetJavaScriptEnabled")

@@ -33,7 +33,7 @@ public class ProgrammeFragment  extends Fragment {
 	private ListView podcastListView = null;
 	private TextView messageTextView = null;
 	
-	private List<Podcast> podcasts = null;
+	private List<Podcast> programme = null;
 	
 	@Override
 	public void	 onAttach(Activity activity) {
@@ -46,7 +46,7 @@ public class ProgrammeFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
     	 
-        // Get the view from fragmenttab1.xml
+        // on associe la vue de programme fragment.xml
         View view = inflater.inflate(R.layout.programme_layout, container, false);
 
         // recuperation des elements graphiques
@@ -59,7 +59,7 @@ public class ProgrammeFragment  extends Fragment {
         return view;
     }
     
-    public void		loadProgramme() {
+    public void	loadProgramme() {
     	
         // on affichage une barre de chargement pendant que les podcasts se chargent
         loadingLayout.setVisibility(View.VISIBLE);
@@ -67,7 +67,7 @@ public class ProgrammeFragment  extends Fragment {
         messageTextView.setVisibility(View.GONE);
 
     	
-    	// on cree la requete internet et on l'envoie. On utilise l'object PodcastFragment en tant que callback,
+    	// on cree la requete internet et on l'envoie. On utilise l'object ProgrammeFragment en tant que callback,
     	// et les methodes onSuccess ou onError seront appele par la classe HttpNetworkRequest en cas de succes ou d'erreur de la requete internet
     	HttpNetworkRequest	networkRequest = new HttpNetworkRequest(PODCAST_XML_URL, new OnRssFeedResult());
     	networkRequest.sendRequest();
@@ -81,11 +81,11 @@ public class ProgrammeFragment  extends Fragment {
 		public void onSuccess(String result) {
 			ExtractPodcast	extractor = new ExtractPodcast();
 			
-			// on recupere une liste de podcast a partir du resultat de la recherche
-			podcasts = extractor.extractItems(result);
+			// on recupere une liste de programme a partir du resultat de la recherche
+			programme = extractor.extractItems(result);
 			
 			// si la liste n'est pas vide, on recupere les images des podcasts
-			if (podcasts != null && podcasts.isEmpty() == false) {
+			if (programme != null && programme.isEmpty() == false) {
 				loadList();
 			}
 			// sinon il y a eu une erreur et on affiche un message d'erreur.
@@ -105,7 +105,7 @@ public class ProgrammeFragment  extends Fragment {
 					podcastListView.setVisibility(View.VISIBLE);
 					
 					// on rempli la listview avec les podcasts grace a un adapter
-					podcastListView.setAdapter(new PodcastListViewAdapter(activity, podcasts, LayoutInflater.from(activity)));
+					podcastListView.setAdapter(new PodcastListViewAdapter(activity, programme, LayoutInflater.from(activity)));
 					
 					// et on defini un evenement lorsqu'on click sur un item de la listview
 					podcastListView.setOnItemClickListener(new OnItemClickListener() {
@@ -114,7 +114,7 @@ public class ProgrammeFragment  extends Fragment {
 						public void onItemClick(AdapterView<?> viewAdapter, View view, int position, long id) {
 							
 							// lorsque l'utilisateur clique sur un item de la liste, on recupere le podcast correspondant
-							Podcast		podcast = podcasts.get(position);
+							Podcast		podcast = programme.get(position);
 							Intent		intent = new Intent(activity, DetailProgActivity.class);
 							
 							// et on stoque les informations du podcast dans l'intent utilise pour demarer la nouvelle activite.

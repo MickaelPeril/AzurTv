@@ -27,27 +27,31 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
  
-            // Open FragmentTab1.java
+            // ouverture 1er fragment
         case 0:
         	if (fragments[0] == null)
         		fragments[0] = new NewsFragment();
         	return fragments[0];
  
-            // Open FragmentTab2.java
+            // ouverture 2eme fragment
         case 1:
         	if (fragments[1] == null)
         		fragments[1] = new PodcastFragment();
         	return fragments[1];
  
-            // Open FragmentTab3.java
+            // ouverture 3eme fragment
         case 2:
         	if (fragments[2] == null)
         		fragments[2] = new WebtvFragment();
         	return fragments[2];
+        	
+        	// ouverture 4eme fragment
         case 3:
         	if (fragments[3] == null)
         		fragments[3] = new ProgrammeFragment();
         	return fragments[3];
+        	
+        	// ouverture 5eme fragment
         case 4:
         	if (fragments[4] == null)
         		fragments[4] = new JeuFragment();

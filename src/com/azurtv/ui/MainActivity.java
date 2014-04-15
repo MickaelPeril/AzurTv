@@ -22,7 +22,7 @@ import com.azurtv.R;
 
 public class MainActivity extends FragmentActivity {
 
-	/*Declaration des Attributs*/
+	//Declaration des Attributs
 	private ViewPagerAdapter viewPagerAdapter = null;
 	private ViewPager viewPager = null;
 

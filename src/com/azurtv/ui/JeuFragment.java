@@ -16,6 +16,7 @@ import com.azurtv.R;
 
 public class JeuFragment extends Fragment {
 
+	// Declaration des Attributs
 	private Activity activity = null;
 	private Button sendButton = null;
 	private EditText nameEditText, emailEditText, adressEditText, zipEditText,
