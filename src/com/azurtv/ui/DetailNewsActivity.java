@@ -14,7 +14,7 @@ import com.azurtv.parser.RSSFeed;
 
 public class DetailNewsActivity extends Activity {
 
-	//Declaration des Attributs
+	// Declaration des Attributs
 	RSSFeed feed;
 	TextView title;
 	WebView desc;
@@ -46,8 +46,9 @@ public class DetailNewsActivity extends Activity {
 		ws.setBuiltInZoomControls(true);
 
 		// on affiche les elements dans la vue
-		title.setText(feed.getItem(pos).getTitle());//textview
-		desc.loadDataWithBaseURL("http://www.azur-tv.fr/news.xml", feed.getItem(pos).getDescription(), "text/html", "UTF-8", null);//webview
+		title.setText(feed.getItem(pos).getTitle());// textview
+		desc.loadDataWithBaseURL("http://www.azur-tv.fr/news.xml", feed
+				.getItem(pos).getDescription(), "text/html", "UTF-8", null);// webview
 	}
 
 }

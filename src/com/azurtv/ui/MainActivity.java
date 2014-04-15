@@ -22,7 +22,7 @@ import com.azurtv.R;
 
 public class MainActivity extends FragmentActivity {
 
-	//Declaration des Attributs
+	// Declaration des Attributs
 	private ViewPagerAdapter viewPagerAdapter = null;
 	private ViewPager viewPager = null;
 
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// recupere la vue de  activity_main.xml
+		// recupere la vue de activity_main.xml
 		setContentView(R.layout.activity_main);
 
 		// localise le viewpager dans activity_main.xml
@@ -43,8 +43,9 @@ public class MainActivity extends FragmentActivity {
 		// On met en place le viewPager
 		viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 		viewPager.setAdapter(viewPagerAdapter);
-		
-		// recupere l'intent envoyer par HomeActivity afin d'afficher le bon fragment lors de l'appui sur le bouton correspondant
+
+		// recupere l'intent envoyer par HomeActivity afin d'afficher le bon
+		// fragment lors de l'appui sur le bouton correspondant
 		Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
 		viewPager.setCurrentItem(bundle.getInt("fragment"));
@@ -76,7 +77,7 @@ public class MainActivity extends FragmentActivity {
 				}
 			}
 
-			//appel du bon fragment lors de l'appui sur un item
+			// appel du bon fragment lors de l'appui sur un item
 			public void itemSelector(int num) {
 				Intent intent2 = getIntent();
 				final Bundle b2 = intent2.getExtras();
@@ -187,7 +188,7 @@ public class MainActivity extends FragmentActivity {
 				((ProgrammeFragment) currentFragment).loadProgramme();
 			}
 
-			return true;		
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

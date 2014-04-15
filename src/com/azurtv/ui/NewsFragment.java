@@ -22,7 +22,7 @@ import com.azurtv.parser.RSSFeed;
 
 public class NewsFragment extends Fragment {
 
-	//Declaration des Attributs
+	// Declaration des Attributs
 	Application myApp;
 	RSSFeed feed;
 	ListView lv;
@@ -41,15 +41,16 @@ public class NewsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		// On recupere la vue de fragmenttab1.xml (vue news)
+		// On recupere la vue de news
 		View view = inflater.inflate(R.layout.news_layout, container, false);
 
 		myApp = activity.getApplication();
 
-		// on recupere le feed qui vient de l'activity de ce fragment ( MainActivity )
+		// on recupere le feed qui vient de l'activity de ce fragment (
+		// MainActivity )
 		feed = (RSSFeed) activity.getIntent().getExtras().get("feed");
 
-		//on initialise la listview pour les news
+		// on initialise la listview pour les news
 		lv = (ListView) view.findViewById(R.id.listViewNews);
 		lv.setVerticalFadingEdgeEnabled(true);
 
@@ -64,7 +65,8 @@ public class NewsFragment extends Fragment {
 					long arg3) {
 				// l'action quand on clique sur un item
 				int pos = arg2;
-				//on envois le feed à l'activity detail news pour afficher en detail la news
+				// on envois le feed à l'activity detail news pour afficher en
+				// detail la news
 				Bundle bundle = new Bundle();
 				bundle.putSerializable("feed", feed);
 				Intent intent = new Intent(activity, DetailNewsActivity.class);
@@ -81,7 +83,7 @@ public class NewsFragment extends Fragment {
 		super.onDestroy();
 		adapter.imageLoader.clearCache();
 		adapter.notifyDataSetChanged();
-		
+
 	}
 
 	class CustomListAdapter extends BaseAdapter {
@@ -89,8 +91,10 @@ public class NewsFragment extends Fragment {
 		public ImageLoader imageLoader;
 
 		public CustomListAdapter(NewsFragment newsfragment) {
-			layoutInflater = (LayoutInflater) newsfragment.activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			imageLoader = new ImageLoader(newsfragment.activity.getApplicationContext());
+			layoutInflater = (LayoutInflater) newsfragment.activity
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			imageLoader = new ImageLoader(
+					newsfragment.activity.getApplicationContext());
 		}
 
 		@Override

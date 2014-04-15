@@ -139,10 +139,6 @@ public class PodcastActivity extends Activity implements OnClickListener,
 	public void onPrepared(final MediaPlayer mp) {
 		player.setDisplay(holder);
 		updateVideoInformation();
-		// player.start();
-		// startVideo();
-		// updatePlay();
-
 		play.setEnabled(true);
 	}
 
