@@ -1,8 +1,12 @@
 package com.azurtv.ui;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -31,11 +35,17 @@ public class MainActivity extends FragmentActivity {
 
 	public int nbFragment;
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// recupere la vue de activity_main.xml
 		setContentView(R.layout.activity_main);
+		
+		// rend le logo de l'actionbar cliquable
+		ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
 
 		// localise le viewpager dans activity_main.xml
 		viewPager = (ViewPager) findViewById(R.id.pager);
@@ -160,6 +170,12 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			// Comportement du bouton logo (retour au menu)
+			Intent intent_menu;
+			intent_menu = new Intent(this, SplashActivity.class);
+			startActivity(intent_menu);
+			return true;
 		case R.id.menu_about:
 			// Comportement du bouton "a Propos"
 			Intent intent_about;
