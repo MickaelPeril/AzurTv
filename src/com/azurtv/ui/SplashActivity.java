@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.azurtv.R;
 import com.azurtv.parser.DOMParser;
@@ -17,12 +18,17 @@ public class SplashActivity extends Activity {
 	// recuperation du xml
 	private final String RSSFEEDURL = "http://www.azur-tv.fr/news.xml";
 	RSSFeed feed;
+	
+	private ImageView load_anim;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// on associe la vue
 		setContentView(R.layout.splash_layout);
+		load_anim=(ImageView)findViewById(R.id.loadView);
+		load_anim.setImageResource(R.drawable.load_anim);
+		
 		// on regarde si le smartphone est connecté ou non
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (conMgr == null || conMgr.getActiveNetworkInfo() == null
@@ -51,6 +57,10 @@ public class SplashActivity extends Activity {
 		}
 	}
 
+	public void LoadNews(){
+		new AsyncLoadXMLFeed().execute();
+	}
+	
 	private class AsyncLoadXMLFeed extends AsyncTask<Void, Void, Void> {
 		@Override
 		protected Void doInBackground(Void... params) {

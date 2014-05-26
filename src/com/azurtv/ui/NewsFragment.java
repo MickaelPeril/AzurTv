@@ -26,7 +26,7 @@ public class NewsFragment extends Fragment {
 	Application myApp;
 	RSSFeed feed;
 	ListView lv;
-
+	public View view;
 	CustomListAdapter adapter;
 
 	private Activity activity = null;
@@ -42,8 +42,13 @@ public class NewsFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		// On recupere la vue de news
-		View view = inflater.inflate(R.layout.news_layout, container, false);
+		view = inflater.inflate(R.layout.news_layout, container, false);
 
+		loadNews();
+		return view;
+	}
+
+	public void loadNews(){
 		myApp = activity.getApplication();
 
 		// on recupere le feed qui vient de l'activity de ce fragment (
@@ -75,9 +80,7 @@ public class NewsFragment extends Fragment {
 				startActivity(intent);
 			}
 		});
-		return view;
 	}
-
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

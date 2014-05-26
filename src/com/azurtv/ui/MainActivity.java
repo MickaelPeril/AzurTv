@@ -187,6 +187,14 @@ public class MainActivity extends FragmentActivity {
 			if (currentFragment instanceof ProgrammeFragment) {
 				((ProgrammeFragment) currentFragment).loadProgramme();
 			}
+//			if (currentFragment instanceof NewsFragment) {
+//				SplashActivity splash= new SplashActivity();
+//				splash.LoadNews();
+//				HomeActivity home =new HomeActivity();
+//				home.loadNews();
+//				NewsFragment news = new NewsFragment();
+//				news.loadNews();
+//			}
 
 			return true;
 		default:
