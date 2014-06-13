@@ -18,113 +18,126 @@
       <LinearLayout
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical"
-           >
-        
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/name" />
+          android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:ems="10"
-        android:hint="@string/enter_name"
-        android:inputType="textEmailAddress" >
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/name" />
 
-        <requestFocus />
-    </EditText>
-        
+          <EditText
+              android:id="@+id/nameEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:ems="10"
+              android:hint="@string/enter_name"
+              android:inputType="textEmailAddress" >
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-         android:layout_marginTop="15dp"
-        android:text="@string/email" />
-        
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:hint="@string/entrer_email"
-            android:inputType="textEmailAddress" />
+              <requestFocus />
+          </EditText>
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="15dp"
-            android:text="@string/adress" />
-        
-        <EditText
-            android:id="@+id/adressEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:hint="@string/entrer_adress"
-            android:inputType="textEmailAddress" />
-        
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/email" />
 
-        
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="15dp"
-            android:text="@string/zip" />
-        
-        <EditText
-            android:id="@+id/zipEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:hint="@string/entrer_zip"
-            android:inputType="textEmailAddress" />
+          <EditText
+              android:id="@+id/emailEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_email"
+              android:inputType="textEmailAddress" />
 
-        
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="15dp"
-            android:text="@string/city" />
-        
-        <EditText
-            android:id="@+id/cityEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:hint="@string/entrer_city"
-            android:inputType="textEmailAddress" />
-        
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/adress" />
 
-        
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="15dp"
-            android:text="@string/answer" />
-        
-        <EditText
-            android:id="@+id/answerEditText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:hint="@string/entrer_answer"
-            android:inputType="textEmailAddress" />
-        
+          <EditText
+              android:id="@+id/adressEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_adress"
+              android:inputType="textEmailAddress" />
 
-    
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@xml/button_design"
-        android:text="@string/send"
-        android:textColor="#ffffff" />
-    
-     </LinearLayout>
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/zip" />
+
+          <EditText
+              android:id="@+id/zipEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_zip"
+              android:inputType="textEmailAddress" />
+
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/city" />
+
+          <EditText
+              android:id="@+id/cityEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_city"
+              android:inputType="textEmailAddress" />
+
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/answer" />
+
+          <EditText
+              android:id="@+id/answerEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_answer"
+              android:inputType="textEmailAddress" />
+
+     <ImageView
+              android:id="@+id/sendButton"
+              android:layout_width="fill_parent"
+              android:layout_height="100dp"
+              android:src="@drawable/btn_send_text"/>
+<!--                android:background="@drawable/btn_send_back" -->
+                
+
+         
+
+
+<!--           <Button -->
+<!--               android:id="@+id/sendButton" -->
+<!--               android:layout_width="fill_parent" -->
+<!--               android:layout_height="233dp" -->
+<!--               android:layout_marginTop="10dp" -->
+<!--               android:background="@drawable/btn_send" /> -->
+
+          
+<!--           <Button -->
+<!--         android:id="@+id/sendButton" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_marginTop="10dp" -->
+<!--         android:background="@xml/button_design" -->
+<!--         android:text="@string/send" -->
+<!--         android:textColor="#ffffff" /> -->
+      </LinearLayout>
+
   </ScrollView>
+
+
+
 </LinearLayout>
