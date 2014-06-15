@@ -27,7 +27,7 @@ public class SplashActivity extends Activity {
 		// on associe la vue
 		setContentView(R.layout.splash_layout);
 		load_anim=(ImageView)findViewById(R.id.loadView);
-		load_anim.setImageResource(R.drawable.load_anim);
+		load_anim.setImageResource(R.xml.load_anim);
 		
 		// on regarde si le smartphone est connecté ou non
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

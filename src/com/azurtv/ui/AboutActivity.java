@@ -29,7 +29,7 @@ public class AboutActivity extends Activity {
 				+ "<p> </p><p>Registrar  azur-tv.fr / azur-tv.com / azur-tv.org / azur-tv.net / azur-tv.eu / azur-tv.be / azur-tv.biz / azurtv.tv / azurtv.net : OVH "
 				+ "- SAS au capital de 500 k€ RCS Roubaix – Tourcoing 424 761 419 00011 – Code APE 721Z - N° TVA : FR 22-424-761-419-00011<br>"
 				+ "Siège social : 140 Quai du Sartel - 59100 Roubaix - France<br>"
-				+ "<p>Développeurs:<br> &bull; Mickael Peril<br> &bull; César Spagnou<br> &bull; Ivan Vujnovic</p>";
+				+ "<p>Développeurs:<br> &bull; Mickael Peril<br> &bull; César Spagnou<br> &bull; CampusID, l'école supérieur d'ingénierie informatique</p>";
 		tv_about = (TextView) findViewById(R.id.tv1);
 		tv_about.setText(Html.fromHtml(html));
 	}
