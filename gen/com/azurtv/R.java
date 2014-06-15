@@ -41,10 +41,11 @@ public final class R {
         public static final int ic_news=0x7f02000e;
         public static final int ic_pause_pressed=0x7f02000f;
         public static final int ic_play_pressed=0x7f020010;
-        public static final int menu=0x7f020011;
-        public static final int menu_hori=0x7f020012;
-        public static final int splashscreen=0x7f020013;
-        public static final int video_icon=0x7f020014;
+        public static final int load_anim=0x7f020011;
+        public static final int menu=0x7f020012;
+        public static final int menu_hori=0x7f020013;
+        public static final int splashscreen=0x7f020014;
+        public static final int video_icon=0x7f020015;
     }
     public static final class id {
         public static final int Contact=0x7f0a000e;
@@ -227,6 +228,5 @@ public final class R {
     }
     public static final class xml {
         public static final int button_design=0x7f040000;
-        public static final int load_anim=0x7f040001;
     }
 }
