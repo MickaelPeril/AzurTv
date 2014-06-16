@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -21,6 +22,7 @@ public class SplashActivity extends Activity {
 	
 	private ImageView load_anim;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,6 +30,32 @@ public class SplashActivity extends Activity {
 		setContentView(R.layout.splash_layout);
 		load_anim=(ImageView)findViewById(R.id.loadView);
 		load_anim.setImageResource(R.drawable.load_anim);
+		
+		/*   test version    */
+		
+		
+//		if (Build.MODEL.startsWith("GT-P")){
+//		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//		alertDialog.setTitle("yeah");
+//		alertDialog.setMessage("c'est un galaxy");
+//		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//		   public void onClick(DialogInterface dialog, int which) {
+//		      // TODO Add your code for the button here.
+//		   }
+//		});
+//		alertDialog.show();
+//		}else{
+//			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//			alertDialog.setTitle("yeah");
+//			alertDialog.setMessage("ce n'est pas  un galaxy");
+//			alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//			   public void onClick(DialogInterface dialog, int which) {
+//			      // TODO Add your code for the button here.
+//			   }
+//			});
+//			alertDialog.show();
+//		}
+		
 		
 		// on regarde si le smartphone est connecté ou non
 		ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -55,6 +83,8 @@ public class SplashActivity extends Activity {
 			// Si connexion alors on commence à parser le xml
 			new AsyncLoadXMLFeed().execute();
 		}
+		
+		
 	}
 
 	public void LoadNews(){

@@ -72,7 +72,6 @@ public final class R {
         public static final int error_console=0x7f0a0037;
         public static final int fullscreen=0x7f0a0017;
         public static final int icone=0x7f0a0033;
-        public static final int item1=0x7f0a003d;
         public static final int listViewNews=0x7f0a002d;
         public static final int loadView=0x7f0a0034;
         public static final int loadingLayout=0x7f0a002e;
