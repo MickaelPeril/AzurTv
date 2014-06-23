@@ -16,7 +16,7 @@ public class ContactActivity extends Activity {
 		setContentView(R.layout.activity_help);
 
 		// Declaration des TextView
-		TextView redaction, GALUP, emission, charay, decorte, ogcn, tierche, lefebre, general;
+		TextView redaction, GALUP, emission, charay, decorte, general;
 
 		// Envoi le code html dans les TextViews
 		String html = "<tr><td><h1> Le Journal</h1><p>(Envoyer un message à la rédaction)<br></p></td><td></a></td></tr>";
@@ -39,21 +39,10 @@ public class ContactActivity extends Activity {
 		decorte = (TextView) findViewById(R.id.tv5);
 		decorte.setText(Html.fromHtml(html4));
 
-		String html5 = "<tr><td><h1>OGCN TV</h1><p>(Envoyer un message à toute l'Equipe de l'OGCN TV)<br></p></td><td></a></td></tr>";
-		ogcn = (TextView) findViewById(R.id.tv6);
-		ogcn.setText(Html.fromHtml(html5));
-
-		String html6 = "<tr><td>Nassim TIRECHE<p>JRI OGCN TV<br></p></td><td></a></td></tr>";
-		tierche = (TextView) findViewById(R.id.tv7);
-		tierche.setText(Html.fromHtml(html6));
-
-		String html7 = "<tr><td>Nassim TIRECHE<p>LE DEBRIEF<br></p></td><td></a></td></tr>";
-		lefebre = (TextView) findViewById(R.id.tv8);
-		lefebre.setText(Html.fromHtml(html7));
-
-		String html8 = "<tr><td><h1>Contact général</h1></td><td></a></td></tr>";
-		general = (TextView) findViewById(R.id.tv9);
-		general.setText(Html.fromHtml(html8));
+		
+		String html5 = "<tr><td><h1>Contact général</h1></td><td></a></td></tr>";
+		general = (TextView) findViewById(R.id.tv6);
+		general.setText(Html.fromHtml(html5));
 
 		// Comportement des TextView lors de l'appui (envoi de mail)
 
@@ -91,25 +80,7 @@ public class ContactActivity extends Activity {
 			}
 		});
 
-		ogcn.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				envoiMail("aide@gmail.com");
-
-			}
-		});
-
-		tierche.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				envoiMail("aide@gmail.com");
-
-			}
-		});
-
-		lefebre.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				envoiMail("aide@gmail.com");
-			}
-		});
+		
 
 		general.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {

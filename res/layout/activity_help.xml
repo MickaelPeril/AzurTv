@@ -75,38 +75,13 @@
     android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="#FF909090" />
-       <TextView
-        android:id="@+id/tv6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" 
-       />
-       <View
-    android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="#FF909090" /> 
-       <TextView
-        android:id="@+id/tv7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" 
-        />
-        <View
-    android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="#FF909090" />
-        <TextView
-        android:id="@+id/tv8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" 
-        />
+       
          <View
     android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="#FF909090" />
          <TextView
-        android:id="@+id/tv9"
+        android:id="@+id/tv6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" 
