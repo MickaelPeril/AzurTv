@@ -19,12 +19,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.azurtv.R;
 
-public class JeuFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
 	// Declaration des Attributs
 	private Activity activity = null;
 	private ImageView sendButton = null;
-	private EditText nameEditText, emailEditText, adressEditText, zipEditText,
+	private EditText nameEditText, emailEditText, telEditText, adressEditText, zipEditText,
 			cityEditText, answerEditText = null;
 
 	@Override
@@ -37,11 +37,12 @@ public class JeuFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.jeu_layout, container, false);
+		View view = inflater.inflate(R.layout.contact_layout, container, false);
 
 		// recuperation des elements graphiques depuis le XML
 		nameEditText = (EditText) view.findViewById(R.id.nameEditText);
 		emailEditText = (EditText) view.findViewById(R.id.emailEditText);
+		telEditText = (EditText) view.findViewById(R.id.telEditText);
 		adressEditText = (EditText) view.findViewById(R.id.adressEditText);
 		zipEditText = (EditText) view.findViewById(R.id.zipEditText);
 		cityEditText = (EditText) view.findViewById(R.id.cityEditText);
@@ -65,6 +66,7 @@ public class JeuFragment extends Fragment {
 					//////////////////////////////////////////
 					String name = nameEditText.getText().toString();
 					String email = emailEditText.getText().toString();
+					String tel = telEditText.getText().toString();
 					String adress = adressEditText.getText().toString();
 					String zip = zipEditText.getText().toString();
 					String city = cityEditText.getText().toString();
@@ -81,6 +83,10 @@ public class JeuFragment extends Fragment {
 					else if (email == null || email.isEmpty())
 						Toast.makeText(activity,
 								getString(R.string.entrer_email_error),
+								Toast.LENGTH_LONG).show();
+					else if (tel == null || tel.isEmpty())
+						Toast.makeText(activity,
+								getString(R.string.enter_tel_error),
 								Toast.LENGTH_LONG).show();
 					else if (adress == null || adress.isEmpty())
 						Toast.makeText(activity,
@@ -109,6 +115,7 @@ public class JeuFragment extends Fragment {
 						// remerciement
 						nameEditText.setText(null);
 						emailEditText.setText(null);
+						telEditText.setText(null);
 						adressEditText.setText(null);
 						zipEditText.setText(null);
 						cityEditText.setText(null);
@@ -120,7 +127,7 @@ public class JeuFragment extends Fragment {
 
 						// Definition du destinataire
 						sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL,
-								new String[] { "ivan.vujno@gmail.com" });
+								new String[] { "contact@azurtv.tv" });
 
 						// Definition de l'objet
 						sendEmail.putExtra(Intent.EXTRA_SUBJECT,
@@ -131,6 +138,7 @@ public class JeuFragment extends Fragment {
 						sendEmail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						sendEmail.putExtra(android.content.Intent.EXTRA_TEXT,
 								" Nom: " + name + "\nEmail: " + email
+										+ "\nTéléphone: " + tel
 										+ "\nAdresse: " + adress
 										+ "\nCode Postal: " + zip + "\nVille: "
 										+ city + "\nRéponse: " + answer);

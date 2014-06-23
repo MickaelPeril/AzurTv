@@ -9,7 +9,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
  
     final int PAGE_COUNT = 5;
     // Tab Titles
-    private String 		tabtitles[] = new String[] { "News", "Podcast", "WebTV", "Programmes", "Jeu" };
+    private String 		tabtitles[] = new String[] { "News", "Podcast", "WebTV", "Programmes", "Contact" };
     private Fragment	fragments[] = new Fragment[PAGE_COUNT];
     
     Context context;
@@ -54,7 +54,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         	// ouverture 5eme fragment
         case 4:
         	if (fragments[4] == null)
-        		fragments[4] = new JeuFragment();
+        		fragments[4] = new ContactFragment();
         	return fragments[4];
         }
         return null;

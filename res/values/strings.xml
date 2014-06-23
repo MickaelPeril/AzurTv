@@ -11,20 +11,23 @@
     <string name="cancel">Annuler</string>
     <string name="enter_identifiant">Identifiant</string>
     <string name="enter_mdp">Mot de passe</string>
-    <string name="name">Nom :</string>
+    <string name="name">Nom et Prénom :</string>
     <string name="enter_name">Entrez votre nom</string>
-    <string name="enter_name_error">Veuillez entrer un nom svp.</string>
     <string name="email">E-mail :</string>
+    <string name="tel">Téléphone :</string>
     <string name="adress">Adresse :</string>
     <string name="zip">Code Postal :</string>
     <string name="city">Ville :</string>
-    <string name="answer">Réponse :</string>
+    <string name="answer">Message :</string>
     <string name="entrer_email">Entrez votre e-mail</string>
+    <string name="entrer_tel">Entrez votre numéro de téléphone</string>
     <string name="entrer_adress">Entrez votre adresse</string>
     <string name="entrer_zip">Entrez votre code postal</string>
     <string name="entrer_city">Entrez votre ville</string>
-    <string name="entrer_answer">Entrez votre réponse</string>
+    <string name="entrer_answer">Entrez votre message</string>
+    <string name="enter_name_error">Veuillez entrer un nom svp.</string>
     <string name="entrer_email_error">Veuillez entrer un e-mail svp.</string>
+    <string name="enter_tel_error">Veuillez entrer un téléphone svp.</string>
     <string name="entrer_zip_error">Veuillez entrer un code postal svp.</string>
     <string name="entrer_adress_error">Veuillez entrer une adresse svp.</string>
     <string name="entrer_city_error">Veuillez entrer une ville svp.</string>
@@ -60,7 +63,8 @@
         <item>Podcast</item>
         <item>WebTv</item>
         <item>Programme</item>
-        <item>Jeu</item>
+        <item>Contact</item>
+        <item>A propos</item>
         <item>Mon Compte</item>
     </string-array>
 

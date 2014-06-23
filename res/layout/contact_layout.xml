@@ -50,7 +50,21 @@
               android:layout_marginLeft="5dp"
               android:hint="@string/entrer_email"
               android:inputType="textEmailAddress" />
+		  
+		  
+		  <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="15dp"
+              android:text="@string/tel" />
 
+          <EditText
+              android:id="@+id/telEditText"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="5dp"
+              android:hint="@string/entrer_tel"
+              android:inputType="textEmailAddress" />
           <TextView
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"

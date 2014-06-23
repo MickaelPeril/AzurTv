@@ -40,14 +40,14 @@ public class HomeActivity extends Activity {
 		// recupération de l'intent envoyé par SplashActivity
 		Intent intent2 = getIntent();
 		final Bundle b2 = intent2.getExtras();
-		final Button news, podcast, webtv, programme, jeu, contact;
+		final Button news, podcast, webtv, programme, about, contact;
 
 		// Declaration de variables
 		news = (Button) findViewById(R.id.News);
 		podcast = (Button) findViewById(R.id.Podcast);
 		webtv = (Button) findViewById(R.id.WebTv);
 		programme = (Button) findViewById(R.id.ProgrammeTV);
-		jeu = (Button) findViewById(R.id.Jeu);
+		about = (Button) findViewById(R.id.About);
 		contact = (Button) findViewById(R.id.Contact);
 
 		// Comportement des boutons
@@ -108,12 +108,12 @@ public class HomeActivity extends Activity {
 			}
 		});
 
-		// bouton jeu
-		jeu.setOnClickListener(new View.OnClickListener() {
+		// bouton a propos
+		about.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
 				Intent intent;
-				intent = new Intent(HomeActivity.this, MainActivity.class);
+				intent = new Intent(HomeActivity.this, AboutActivity.class);
 
 				intent.putExtras(b2);
 				intent.putExtra("fragment", 4);
@@ -122,12 +122,12 @@ public class HomeActivity extends Activity {
 			}
 		});
 		
-		// bouton jeu
+		// bouton contact
 				contact.setOnClickListener(new View.OnClickListener() {
 					public void onClick(View v) {
 
 						Intent intent;
-						intent = new Intent(HomeActivity.this, ContactActivity.class);
+						intent = new Intent(HomeActivity.this, MainActivity.class);
 
 						intent.putExtras(b2);
 						intent.putExtra("fragment", 4);

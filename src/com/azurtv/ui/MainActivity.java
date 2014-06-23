@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+
 import com.azurtv.R;
 
 public class MainActivity extends FragmentActivity {
@@ -83,6 +84,9 @@ public class MainActivity extends FragmentActivity {
 				} else if (id == 4) {
 					itemSelector((int) id);
 				} else if (id == 5) {
+					Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+					startActivity(intent);
+				} else if (id == 6) {
 					showDialog(1);
 				}
 			}
@@ -141,9 +145,10 @@ public class MainActivity extends FragmentActivity {
 				alertDialog.dismiss();
 				Toast.makeText(
 						MainActivity.this,
-						"User Name : " + userName.getText().toString()
+						"erreur de Connexion ",
+						/*"User Name : " + userName.getText().toString()
 								+ "  Password : "
-								+ password.getText().toString(),
+								+ password.getText().toString(),*/
 						Toast.LENGTH_LONG).show();
 			}
 		});
@@ -175,18 +180,6 @@ public class MainActivity extends FragmentActivity {
 			Intent intent_menu;
 			intent_menu = new Intent(this, SplashActivity.class);
 			startActivity(intent_menu);
-			return true;
-		case R.id.menu_about:
-			// Comportement du bouton "a Propos"
-			Intent intent_about;
-			intent_about = new Intent(this, AboutActivity.class);
-			startActivity(intent_about);
-			return true;
-		case R.id.menu_contact:
-			// Comportement du bouton "Aide"
-			Intent intent_help;
-			intent_help = new Intent(this, ContactActivity.class);
-			startActivity(intent_help);
 			return true;
 		case R.id.menu_refresh:
 			// Comportement du bouton "Rafraichir"
