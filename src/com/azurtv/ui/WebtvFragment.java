@@ -9,13 +9,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.azurtv.R;
 import com.azurtv.network.NetworkUtil;
 
 public class WebtvFragment extends Fragment {
-
 	private HTML5WebView html5WebView;
 
 	private WakeLock wakeLock;
@@ -25,6 +26,7 @@ public class WebtvFragment extends Fragment {
 			Bundle savedInstanceState) {
 		if (Build.VERSION.SDK_INT >= 14) {
 			if (NetworkUtil.isOnline(getActivity())) {
+				
 				getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
 				html5WebView = new HTML5WebView(getActivity(),
@@ -42,9 +44,11 @@ public class WebtvFragment extends Fragment {
 				return view;
 			}
 		}
-
+		
+		
 		final View view = inflater.inflate(R.layout.webtv_layout, container,
 				false);
+		
 		final TextView error = (TextView) view.findViewById(R.id.error);
 		error.setText(R.string.webTv_error);
 

@@ -74,7 +74,6 @@
             android:name="com.azurtv.ui.HomeActivity"
              android:label="@string/title_activity_home" 
              android:configChanges="orientation">
-<!--             android:screenOrientation="portrait" -->
            
         </activity>
     </application>

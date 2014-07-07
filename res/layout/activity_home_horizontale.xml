@@ -70,7 +70,7 @@
 
         <Button
             android:background="@android:color/transparent"
-            android:id="@+id/Jeu"
+            android:id="@+id/About"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="0.91" />
